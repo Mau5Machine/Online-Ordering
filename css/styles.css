@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css?family=Hind|Roboto|Oldenburg');
+
+/* 
+CSS RULES:
+box-shadow: 2px 2px 2px black;
+headings font: 'Hind', sans-serif
+paragraph font: 'Roboto', sans-serif
+external fonts: 
+    'BigCaslon', 
+    'OldNewspaperTypes',
+    'Windy Wood Demo' 
+main colors: [ 
+    Green : #908d34, 
+    Blue : #00698F, 
+    Red : #B3292E, 
+    Dark Fig Red : #551313, 
+    Bright Green : #8DC63F
+    ]
+main container max-width: 1024px
+responsive break points: [
+    'tablet' : 800px,
+    'phones' : 599px
+]
+header/footer width: full
+*/
+
+/* GLOBAL */
+h1,
+h2,
+h3 {
+    font-family: 'Hind', sans-serif;
+}
+
+body {
+    background: url('../images/wallpaper/green-background-layer.jpg');
+    font-family: 'Oldenburg', cursive;
+}
+
+/* CUSTOM CLASSES */
+.farm-grn-bg {
+    background-color: #908d34;
+}
+
+.farm-blue-bg {
+    background-color: #00698F;
+}
+
+.farm-red-bg {
+    background-color: #B3292E;
+}
+
+.farm-fig-red-bg {
+    background-color: #551313;
+}
+
+.farm-bright-grn-bg {
+    background-color: #8DC63F;
+}
+
+.transp-grey {
+    background-color: rgba(128, 128, 128, 0.315);
+}
+
+/* WRAPPER  */
+.wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+/* NAV */
+.navbar-brand img {
+    background-color: rgba(255, 255, 255, 0.575);
+    padding: 4px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px black;
+}
+
+/* MODAL */
+.modal-content {
+    box-shadow: 2px 2px 5px black;
+    width: 800px;
+    padding: 10px;
+}
+
+.modal-content input {
+    margin: 5px 0;
+}
+
+.modal-body .badge {
+    font-size: 1.2em;
+}
+
+.modal {
+    margin: 0 auto;
+    margin-top: 200px;
+}
+
+/* ////////////////////////////////////////
+///////////    HOME PAGE    ////////////// */
+
+/* JUMBOTRON HEADER */
+/* .jumbotron {} */
+
+/* CONTENT */
+/* HOW IT WORKS */
+.how-it-works {
+    background: url('../images/wallpaper/ft-wp.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    padding-bottom: 60px;
+    border: 1px solid black;
+    margin-bottom: 80px;
+    box-shadow: 2px 2px 5px black;
+}
+
+.how-it-works img {
+    margin: 0 auto;
+    box-shadow: 2px 2px 5px black;
+}
+
+.how-it-works aside {
+    box-shadow: 2px 2px 5px black;
+}
+
+.how-it-works .card-header {
+    color: #fff;
+}
+
+.arrow img {
+    box-shadow: 0 0 0;
+    padding: 20px 5px;
+    margin-top: 60px;
+}
+
+/* LOCATION */
+.map iframe {
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px black;
+}
+
+.location img {
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 5px black;
+}
+
+/* ////////////////////////////////////////
+///////////    MENU PAGE    ////////////// */
+/* .menu-intro {
+    background-color: white;
+}
+
+.menu-intro img {
+    padding: 15px 0;
+    margin: 0 auto;
+}
+
+.menu-grid {
+    background-color: white;
+    height: 800px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
+
+.grid-item {
+    background-color: blue;
+    padding: 40px;
+} */
+
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+footer {
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    /* Height of the footer */
+    color: white;
+}

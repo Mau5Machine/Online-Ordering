@@ -1,0 +1,6 @@
+# Don't track these folders
+jquery/
+html/
+
+# Don't track these files
+*.html
