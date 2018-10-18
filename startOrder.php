@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Start Order';
 include 'inc/header.php';
 ?>
 <div class="container">
@@ -8,10 +9,6 @@ include 'inc/header.php';
         &bull; Once time is selected, redirect to startOrder.php
     </p>
 </div>
-
-
-
-
 
 <?php
 include 'inc/footer.php';

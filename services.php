@@ -1,4 +1,6 @@
 <?php
+$pageWallpaper = 'home-wp';
+$pageTitle = 'Services';
 include 'inc/header.php';
 ?>
 <div class="container">

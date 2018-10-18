@@ -1,13 +1,15 @@
 <?php
+$pageWallpaper = 'home-wp';
+$pageTitle = 'Home';
 include 'inc/header.php';
 ?>
 
 <!-- Banner Goes Here -->
-<header>
-    <div class="jumbotron transp-grey header text-center">
-        <img src="images/text/caterheader.png" alt="catering" class="img-fluid">
+<header id="banner">
+    <div class="jumbotron transp-grey text-center">
+        <img src="images/catering-sign.png" alt="catering" class="img-fluid">
 
-        <p class="lead">
+        <p class="lead" id="banner-btn">
             <a class="btn btn-primary btn-lg" href="menu.php" role="button">Catering Menu</a>
             <a class="btn btn-primary btn-lg" href="startOrder.php" role="button">Start Order</a>
         </p>
@@ -16,12 +18,12 @@ include 'inc/header.php';
 <!-- End Banner -->
 
 <!-- Start site content -->
-<article class="container how-it-works ">
+<article class="container how-it-works">
     <div class="row">
-        <img src="images/text/howitworks.png" class="img-fluid my-4">
+        <img src="images/text/howitworks.png" class="img-fluid my-4" id="how-it-works-header">
     </div>
 
-    <div class="row  d-flex justify-content-center">
+    <div class="row  d-flex justify-content-around">
 
         <!-- How it works cards -->
         <aside class="card bg-light mb-3" style="max-width: 20rem;">
@@ -43,9 +45,8 @@ include 'inc/header.php';
         </aside>
 
         <!-- Arrow to next card goes here -->
-        <!-- TODO: Do something about this arrow as the size of screen changes! -->
         <div class="arrow">
-            <img src="images/arrow.png" alt="">
+            <img src="images/arrow.png" alt="" id="how-it-works-transfer">
         </div>
 
         <!-- Second card here -->
@@ -70,9 +71,9 @@ include 'inc/header.php';
 <!-- End how it works container -->
 
 <!-- Location and info container -->
-<article class="container mb-5 location">
+<article class="container pb-5" id="location">
     <div class="row">
-        <img src="images/text/location.png" alt="location" class="img-fluid">
+        <img src="images/text/location.png" alt="location" class="img-fluid" id="location-header">
     </div>
     <div class="row location-row d-flex justify-content-center">
         <div class="map">

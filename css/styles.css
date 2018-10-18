@@ -17,10 +17,13 @@ main colors: [
     Bright Green : #8DC63F
     ]
 main container max-width: 1024px
-responsive break points: [
-    'tablet' : 800px,
-    'phones' : 599px
-]
+Media queries:
+Landscape phone to portrait tablet 
+@media (max-width: 767px) { ),
+Landscape phones and down
+@media (max-width: 480px) { },
+Portrait tablet to landscape and desktop
+@media (min-width: 768px) and (max-width: 979px) { }
 header/footer width: full
 */
 
@@ -32,9 +35,18 @@ h3 {
 }
 
 body {
-    background: url('../images/wallpaper/green-background-layer.jpg');
     font-family: 'Oldenburg', cursive;
 }
+
+#home-wp {
+    background: url('../images/wallpaper/green-background-layer.jpg');
+}
+
+#contact-wp {
+    background: url('../images/wallpaper/ted-cater.jpg');
+}
+
+.contact-wp
 
 /* CUSTOM CLASSES */
 .farm-grn-bg {
@@ -58,42 +70,23 @@ body {
 }
 
 .transp-grey {
-    background-color: rgba(128, 128, 128, 0.315);
+    background-color: rgba(255, 255, 255, 0.897);
 }
 
 /* WRAPPER  */
-.wrapper {
+.#content {
     min-height: 100%;
     position: relative;
 }
 
 /* NAV */
 .navbar-brand img {
-    background-color: rgba(255, 255, 255, 0.575);
-    padding: 4px;
+    background-color: rgb(255, 255, 255);
     border-radius: 15px;
     box-shadow: 2px 2px 5px black;
 }
 
 /* MODAL */
-.modal-content {
-    box-shadow: 2px 2px 5px black;
-    width: 800px;
-    padding: 10px;
-}
-
-.modal-content input {
-    margin: 5px 0;
-}
-
-.modal-body .badge {
-    font-size: 1.2em;
-}
-
-.modal {
-    margin: 0 auto;
-    margin-top: 200px;
-}
 
 /* ////////////////////////////////////////
 ///////////    HOME PAGE    ////////////// */
@@ -140,11 +133,40 @@ body {
     box-shadow: 2px 2px 5px black;
 }
 
-.location img {
+#location {
+    background: url('../images/wallpaper/almond-dates-wp.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px black;
+    margin-bottom: 10px;
+    padding: 30px;
+}
+
+#location-header {
     margin: 0 auto;
     border-radius: 10px;
     margin-bottom: 20px;
     box-shadow: 2px 2px 5px black;
+}
+
+
+/* ////////////////////////////////////////
+///////////    CONTACT PAGE    ////////////// */
+#contact-wrapper {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 800px;
+}
+
+#contact-panel {
+    background: rgba(255, 255, 255, 0.959);
+}
+
+#contact-sign {
+    margin: 0 auto;
 }
 
 /* ////////////////////////////////////////
@@ -176,10 +198,68 @@ body {
     padding: 40px;
 } */
 
+/* Landscape phones and down */
+@media (max-width: 480px) {
 
+    /* Styles */
+    #start-btn {
+        font-size: .75em;
+    }
 
+    #banner-btn a {
+        font-size: .75em;
+    }
 
+    .how-it-works {
+        width: 100%;
+        margin-top: 50px;
+        border-radius: 0;
+    }
 
+    #how-it-works-header {
+        width: 85%;
+    }
+
+    #how-it-works-transfer {
+        margin-top: 0;
+        display: none;
+    }
+
+    .how-it-works aside {
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    #location {
+        border-radius: 0;
+    }
+
+    .map iframe {
+        width: 100%;
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    #how-it-works-transfer {
+        display: none;
+    }
+
+    .how-it-works {
+        width: 100%;
+    }
+
+    .how-it-works aside {
+        margin: 0 auto;
+    }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    #how-it-works-transfer {
+        display: none;
+    }
+}
 
 
 
