@@ -6,9 +6,11 @@ include 'inc/header.php';
 <!-- Start BODY CONTENT FOR CONTACT PAGE HERE -->
 <div id="contact-wrapper">
 
+
     <div id="contact-panel" class="container">
         <div class="row">
             <img src="images/contact-sign.png" alt="contact us" id="contact-sign">
+            <!-- HTML --> 
         </div>
 
         <div id="contact-info">
