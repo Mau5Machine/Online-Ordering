@@ -2,138 +2,91 @@
 $pageWallpaper = 'home-wp';
 $pageTitle = 'Menu';
 include 'inc/header.php';
-// FIXME: jQuery tabbed navigation is not working properly!!!!
+
+// include the connection file
+require_once 'inc/connect.php';
+
+// Prepare a SQL select statement to view the menu items
+$sql = "SELECT package_id, title, cost, description, course FROM packages";
+
+// Run a query on the database
+$results = $pdo->query($sql);
 ?>
 
+<section id="menu-tabs"> <!-- Container for the entire Menu Nav Section + Content -->
 
-<script>
-  $("#menu-tabs").tabs({
-    heightStyle: "fill"
-});
-</script>
-<section id="menu-tabs">
-  <ul class="menu-tabbed-nav">
-    <li><a href="#packages"><span>Packages</span></a></li>
-    <li><a href="#courses"><span>Courses</span></a></li>
-    <li><a href="#addons"><span>Add-Ons</span></a></li>
-    <li><a href="#desserts"><span>Desserts</span></a></li>
-  </ul>
-
-
-  <article id="packages">
-    <h1>Breakfast & Brunch Packages</h1>
-
-    <!-- Card Container -->
-    <div class="menu-card-wrapper d-flex justify-content-around flex-wrap">
-
-      <!-- Card for menu items -->
-      <div class="card" id="menu-item-card">
-        <div class="card-body">
-          <h5 class="card-title">Continental</h5>
-          <h6 class="card-subtitle mb-2 text-muted"><em>$15 per person</em></h6>
-          <p class="card-text">
-            Assorted Mini Muffins & Breakfast Pastries,
-            Greek Yogurt - Oak Nut Granola <em>Wildflower Honey, Assorted House Made Preserves</em>,
-            Seasonal Fresh Fruit Bowl</p>
-          <form action="">
-            <input type="number" name="people_amount" placeholder="Amount of people">
-            <input type="submit" name="add_to_order" value="Add">
-          </form>
-        </div>
+  <div class="menu-nav"> <!-- Menu Navigation Tabs inside here! -->
+    <nav>
+      <div class="nav nav-tabs d-flex justify-content-center flex-wrap" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-packages-tab" data-toggle="tab" href="#nav-packages" role="tab"
+          aria-controls="nav-packages" aria-selected="true">Packages</a>
+        <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses disabled" role="tab"
+          aria-controls="nav-courses" aria-selected="false">Courses</a>
+        <a class="nav-item nav-link" id="nav-addons-tab" data-toggle="tab" href="#nav-addons disabled" role="tab" aria-controls="nav-addons"
+          aria-selected="false">Addons</a>
       </div>
-      <!-- End of Card -->
-      <!-- Card for menu items -->
-      <div class="card" id="menu-item-card">
-        <div class="card-body">
-          <h5 class="card-title">Eye Opener</h5>
-          <h6 class="card-subtitle mb-2 text-muted"><em>$20 per person</em></h6>
-          <p class="card-text">
-            Assorted Mini Muffins & Breakfast Pastries,
-            Greek Yogurt - Oak Nut Granola <em>Wildflower Honey, Assorted House Made Preserves</em>,
-            Seasonal Fresh Fruit Bowl</p>
-          <form action="">
-            <input type="number" name="people_amount" placeholder="Amount of people">
-            <input type="submit" name="add_to_order" value="Add">
-          </form>
-        </div>
-      </div>
-      <!-- End of Card -->
-      <!-- Card for menu items -->
-      <div class="card" id="menu-item-card">
-        <div class="card-body">
-          <h5 class="card-title">Continental</h5>
-          <h6 class="card-subtitle mb-2 text-muted"><em>$15 per person</em></h6>
-          <p class="card-text">
-            Assorted Mini Muffins & Breakfast Pastries,
-            Greek Yogurt - Oak Nut Granola <em>Wildflower Honey, Assorted House Made Preserves</em>,
-            Seasonal Fresh Fruit Bowl</p>
-          <form action="">
-            <input type="number" name="people_amount" placeholder="Amount of people">
-            <input type="submit" name="add_to_order" value="Add">
-          </form>
-        </div>
-      </div>
-      <!-- End of Card -->
-    </div> <!-- End of card container-->
+    </nav>
+  </div>
 
-    <div class="card-wrapper d-flex justify-content-around flex-wrap">
+  <!-- Start Menu Panels Here! -->
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-packages" role="tabpanel" aria-labelledby="nav-packages-tab">
 
-      <!-- Card for menu items -->
-      <div class="card" id="menu-item-card">
-        <div class="card-body">
-          <h5 class="card-title">Continental</h5>
-          <h6 class="card-subtitle mb-2 text-muted"><em>$15 per person</em></h6>
-          <p class="card-text">
-            Assorted Mini Muffins & Breakfast Pastries,
-            Greek Yogurt - Oak Nut Granola <em>Wildflower Honey, Assorted House Made Preserves</em>,
-            Seasonal Fresh Fruit Bowl</p>
-          <form action="">
-            <input type="number" name="people_amount" placeholder="Amount of people">
-            <input type="submit" name="add_to_order" value="Add">
-          </form>
-        </div>
-      </div>
-      <!-- End of Card -->
-      <!-- Card for menu items -->
-      <div class="card" id="menu-item-card">
-        <div class="card-body">
-          <h5 class="card-title">Continental</h5>
-          <h6 class="card-subtitle mb-2 text-muted"><em>$15 per person</em></h6>
-          <p class="card-text">
-            Assorted Mini Muffins & Breakfast Pastries,
-            Greek Yogurt - Oak Nut Granola <em>Wildflower Honey, Assorted House Made Preserves</em>,
-            Seasonal Fresh Fruit Bowl</p>
-          <form action="">
-            <input type="number" name="people_amount" placeholder="Amount of people">
-            <input type="submit" name="add_to_order" value="Add">
-          </form>
-        </div>
-      </div>
-      <!-- End of Card -->
-      <!-- Card for menu items -->
-      <div class="card" id="menu-item-card">
-        <div class="card-body">
-          <h5 class="card-title">Continental</h5>
-          <h6 class="card-subtitle mb-2 text-muted"><em>$15 per person</em></h6>
-          <p class="card-text">
-            Assorted Mini Muffins & Breakfast Pastries,
-            Greek Yogurt - Oak Nut Granola <em>Wildflower Honey, Assorted House Made Preserves</em>,
-            Seasonal Fresh Fruit Bowl</p>
-          <form action="">
-            <input type="number" name="people_amount" placeholder="Amount of people">
-            <input type="submit" name="add_to_order" value="Add">
-          </form>
-        </div>
-      </div>
-      <!-- End of Card -->
-    </div> <!-- End of card container-->
+      <!-- Package itemns in this container -->
+      <article id="packages">
+        <h1>Breakfast & Brunch Packages</h1>
 
-  </article> <!-- End of packages page -->
+        <!-- Card Panel Layout in this Div-->
+        <div class="menu-card-wrapper d-flex justify-content-around flex-wrap">
+              
+              <!-- Card Content From the Database! -->
+              <?php
+                while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<div class='card' id='menu-item-card'>";
+                    echo "<div class='card-body'>";
+                    echo "<h5 class='card-title'>" . $row['title'] . "</h5>";
+                    echo "<h6 class='card-subtitle mb-2 text-muted'><em>$ " . $row['cost'] . " per person</em></h6>";
+                    echo "<p class='card-text'>";
+                    echo "<ul>";
+                    echo $row['description'];
+                    echo "</ul>";
+                    echo "<form action=''>";
+                    echo "<input type='number' name='people_amount' placeholder='Amount of people'>";
+                    echo "<input type='submit' name='add_to_order' value='Add'>";
+                    echo "</form>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+              ?>
+     
+        </div> <!-- End of card container-->
+
+      </article> <!-- End of packages page -->
+
+    </div> <!-- End of packages Container -->
+
+  <div class="tab-pane fade" id="nav-courses" role="tabpanel" aria-labelledby="nav-courses-tab">
+
+    <h1>Hello</h1>
 
 
+  </div>
+  <div class="tab-pane fade" id="nav-addons" role="tabpanel" aria-labelledby="nav-addons-tab">
+
+    <p>Wtf?</p>
+  
+  </div>
+  </div>
+  <div class="tab-content">
 
 
+  </div>
 
-  <?php
+</div>
+
+</section>
+
+
+<?php
 include 'inc/footer.php';
 ?>

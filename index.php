@@ -2,6 +2,7 @@
 $pageWallpaper = 'home-wp';
 $pageTitle = 'Home';
 include 'inc/header.php';
+include_once 'inc/connect.php';
 ?>
 
 <!-- Banner Goes Here -->

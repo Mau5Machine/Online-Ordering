@@ -4,3 +4,4 @@ html/
 
 # Don't track these files
 *.html
+inc/connect.php

@@ -185,6 +185,10 @@ body {
     margin-bottom: 20px;
 }
 
+.menu-nav nav {
+    background: rgba(255, 255, 255, 0.582);
+}
+
 /* Landscape phones and down */
 @media (max-width: 480px) {
 
