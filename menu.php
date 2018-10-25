@@ -44,15 +44,16 @@ $results = $pdo->query($sql);
                 while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
                     echo "<div class='card' id='menu-item-card'>";
                     echo "<div class='card-body'>";
-                    echo "<h5 class='card-title'>" . $row['title'] . "</h5>";
-                    echo "<h6 class='card-subtitle mb-2 text-muted'><em>$ " . $row['cost'] . " per person</em></h6>";
+                    echo "<h5 class='card-title mb-3'><a href='details.php?id='" . $row['package_id'] . "'>" . $row['title'] . "</a></h5>";
+                    echo "<h6 class='card-subtitle mb-2'><em><strong>$ " . $row['cost'] . " per person</em></strong></h6>";
                     echo "<p class='card-text'>";
                     echo "<ul>";
                     echo $row['description'];
                     echo "</ul>";
                     echo "<form action=''>";
-                    echo "<input type='number' name='people_amount' placeholder='Amount of people'>";
-                    echo "<input type='submit' name='add_to_order' value='Add'>";
+                    echo "<input type='number' name='people_amount' placeholder='Amount of people' id='qty'>";
+                    echo "<input type='hidden' name='package_id' value='" . $row['package_id'] . "'>";
+                    echo "<button type='submit' class='btn btn-success' name='add_to_order'><i class='fas fa-plus'></i></button>";
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
@@ -68,7 +69,9 @@ $results = $pdo->query($sql);
   <div class="tab-pane fade" id="nav-courses" role="tabpanel" aria-labelledby="nav-courses-tab">
 
     <h1>Hello</h1>
+<style>
 
+</style>
 
   </div>
   <div class="tab-pane fade" id="nav-addons" role="tabpanel" aria-labelledby="nav-addons-tab">
