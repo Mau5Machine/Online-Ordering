@@ -174,6 +174,10 @@ li {
     margin: 0 auto;
 }
 
+.hidden-field {
+    display: none;
+}
+
 /* ////////////////////////////////////////
 ///////////    MENU PAGE    ////////////// */
 #menu-item-card {
@@ -294,6 +298,8 @@ footer {
     bottom: 0;
     width: 100%;
     height: 60px;
+    position: fixed;
+    bottom: 0;
     /* Height of the footer */
     color: white;
 }
