@@ -29,8 +29,4 @@
 <li>Will NOT use email addresses for ANYTHING ELSE besides this application and verification purposes</li>
 </ul>
 
-<<<<<<< HEAD
 <h4>This project is on my github for review purposes and version control mostly for myself only. I am not accepting any contributions at this time since I am building this one completely on my own for graduation. If I decide to continue working on it after and it becomes tangible, I will be accepting help.</h4>
-=======
-<h4>This project is on my github for review purposes and version control mostly for myself only. I am not accepting any contributions at this time since I am building this one completely on my own for graduation. If I decide to continue working on it after and it becomes tangible, I will be accepting help.</h4>
->>>>>>> 4673edf96bd703b55012a3d5f7796700fbd3e334
