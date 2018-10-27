@@ -5,6 +5,8 @@
     <title>
         <?= $pageTitle ?>
     </title>
+    <!-- Favicon Here -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/icon">
     <!-- jQuery UI and jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>

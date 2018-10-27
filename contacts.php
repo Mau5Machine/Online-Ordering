@@ -1,41 +1,77 @@
 <?php
-// Import the PHPMailer class into the global namespace
-use PHPMailer\PHPMailer\PHPMailer;
 
-require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require 'vendor/phpmailer/phpmailer/src/Exception.php';
-require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 // Check and filter the input
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $first_name = trim(filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_STRING));
-    $last_name = trim(filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_STRING));
+    $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING));
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
     $phone = trim(filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_NUMBER_INT));
     $comments = trim(filter_input(INPUT_POST, 'comments', FILTER_SANITIZE_SPECIAL_CHARS));
     // Check for values in form fields
-    if ($first_name == "" || $last_name == "" || $email == "" || $comments == "") {
-        $error_message = "Please fill in the required fields: First Name, Last Name, Email, and Comments";
+    if ($name == "" || $email == "" || $comments == "") {
+        $error_message = "Please fill in the required fields: Full Name, Email, and Comments";
     }
     // Checking if hidden address form is filled out for humans
     if (!isset($error_message) && $_POST['address'] != "") {
         $error_message = "Bad form input";
     }
-    // Checking if the email address is valid
-    if (!isset($error_message) && !PHPMailer::validateAddress($email)) {
-        $error_message = "Invalid Email Address";
-    }
 
     if (!isset($error_message)) {
-        // Build email body
-        $email_body = "";
-        $email_body .= "First Name: " . $first_name . "\n";
-        $email_body .= "Last Name: " . $last_name. "\n";
-        $email_body .= "Email: " . $email. "\n";
-        $email_body .= "Phone Number: " . $phone. "\n";
-        $email_body .= "\n\nComments\n\n";
-        $email_body .= "Comments: " . $comments. "\n";
+        // Start setting up the email to catering department contact
+        // Set the email addresses here
+        $confirm_to = $email;
+        $submit_to = "christian@farmerstableboca.com";
+        // Set subjects
+        $confirm_subject = "Contact Form Submitted Successfully!";
+        $subject_submit = "Catering Contact Form Submission";
+        // Build email body for contact form submission
+        $message_submit = '
+        <html>
+        <head>
+            <title>Contact Form Submission</title>
+        </head>
+        <body>
+        <h4>Contact Form Submission From ' . ucwords($name) . '</h4>
+        <p>Email: ' . $email . '</p>
+        <p>Phone Number: ' . $phone . '</p>
+        <p>Comments: </p>
+        <p>' . $comments . '</p>
+        </body>
+        </html>';
+
+        // Build and email confirmation for the guest
+        $confirmation_msg = '
+        <html>
+        <head>
+            <title>Thank You For Your Input!</title>
+        </head>
+        <body>
+        <h4>Thank You for your email ' . ucwords($name) . '</h4>
+        <p>Someone will respond to you shortly at the email address you provided!</p>
+        </body>
+        </html>';
+
+        // Settings for the contact submission email
+        $from = "projectcgm@cmartins.pbcs.us";
+        $headers_submit = "MIME-Version: 1.0" . "\r\n";
+        $headers_submit .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+        $headers_submit .= "From: $from" . "\r\n";
+
+        // Settings for the confirmation email
+        $confirm_from = "christian@afkdeveloper.com";
+        $headers_confirm = "MIME-Version: 1.0" . "\r\n";
+        $headers_confirm .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+        $headers_confirm .= "From: $confirm_from" . "\r\n";
+
+        // Send Confirmation Email
+        mail($confirm_to, $confirm_subject, $confirmation_msg, $headers_confirm);
+        // Send Contact Submission Email
+        mail($submit_to, $subject_submit, $message_submit, $headers_submit);
+
+        // Redirect to say Thank You
+        header('location: contacts.php?status=thanks');
     }
 }
+
 
 $pageWallpaper = 'contact-wp';
 $pageTitle = 'Contact Us';
@@ -50,69 +86,83 @@ include 'inc/header.php';
 
     <div id="contact-panel" class="container">
         <div class="row">
-            <img src="images/contact-sign.png" alt="contact us" id="contact-sign">
+            <img src="images/contact-sign.png" class="img-fluid" alt="contact us" id="contact-sign">
+        </div>
+
+        <!-- Form message here -->
+        <div class="form-msg col-sm-12 col-md-6">
             <?php
                 if (isset($_GET['status']) && $_GET['status'] == 'thanks') {
-                    echo '<p>Thanks for the email! I&rsquo;ll check out your comments shortly!</p>';
+                    ?>
+            <h5 class="text-center pl-5 success-msg">Thanks for the email! Someone will reach out to you as soon as possible!</h5>
+            <?php
                 } else {
                     if (isset($error_message)) {
-                        echo "<p class='danger'>" . $error_message . "</p>";
+                        ?>
+            <h5 class="pl-2 error-msg text-center">
+                <?= $error_message ?>
+            </h5>
+            <?php
                     } else {
-                        echo '<p>If you think there is something missing let me know, complete the form to send me an email!</p>';
+                        ?>
+            <h5 class="text-center pl-5">Let us know if you have any comments or suggestions, send us an email!</h5>
+            <?php
                     }
                 }
-
 ?>
         </div>
 
+        <!-- Start Contact Form Here  -->
         <section class="contact-form">
             <form action="" method="post">
                 <legend>Contact Us</legend>
-                <div class="form-group col-6">
-                    <label for="firstNameField">First Name</label>
-                    <input type="text" class="form-control" id="firstNameField" placeholder="First Name" name="first_name"
-                        required value=" <?php if (isset($first_name)) {
-    echo $first_name;
+                <!-- Full Name Field Here -->
+                <div class="form-group col-sm-12 col-md-6">
+                    <label for="nameField">Full Name</label>
+                    <input type="text" class="form-control" id="nameField" placeholder="Full Name" name="name" value=" <?php if (isset($name)) {
+    echo $name;
 } ?> ">
                 </div>
-                <div class="form-group col-6">
-                    <label for="lastNameField">Last Name</label>
-                    <input type="text" class="form-control" id="lastNameField" placeholder="Last Name" name="last_name"
-                        required value=" <?php if (isset($last_name)) {
-    echo $last_name;
-} ?> ">
-                </div>
-                <div class="form-group col-6">
+
+                <!-- Email Field Here -->
+                <div class="form-group col-sm-12 col-md-6">
                     <label for="emailField">Email Address</label>
                     <input type="email" class="form-control" id="emailField" placeholder="Email Address" name="email"
-                        required value=" <?php if (isset($email)) {
+                        value=" <?php if (isset($email)) {
     echo $email;
 } ?> ">
                 </div>
-                <div class="form-group col-6">
+
+                <!-- Phone Number Field Here -->
+                <div class="form-group col-sm-12 col-md-6">
                     <label for="phoneField">Phone Number</label>
-                    <input type="tel" class="form-control" id="phoneField" placeholder="Phone Number" name="phone"
+                    <input type="tel" class="form-control" id="phoneField" placeholder="ie: 561-555-5545" name="phone"
                         value=" <?php if (isset($phone)) {
     echo $phone;
 } ?> ">
                 </div>
-                <div class="form-group col-6">
+
+                <!-- Comments Field Here -->
+                <div class="form-group col-sm-12 col-md-6">
                     <label for="comments">Comments & Suggestions</label>
                     <textarea name="comments" id="comments" class="form-control" rows="5">
                     </textarea>
                 </div>
-                <div class="form-group col-4">
-                    <input type="submit" value="Submit" class="btn btn-primary">
-                </div>
+
+                <!-- Hidden Field Here -->
                 <div class="hidden-field">
                     <input type="text" id="address" name="address">
                     <p>Please leave this field blank!</p>
                 </div>
+
+                <!-- Submit Here -->
+                <div class="form-group col-4">
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </div>
             </form>
         </section>
+    </div> <!-- END CONTENT BODY HERE -->
 
-</div> <!-- END CONTENT BODY HERE -->
-
-<?php
+    <?php
 include 'inc/footer.php';
 ?>
