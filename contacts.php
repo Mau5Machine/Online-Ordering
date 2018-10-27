@@ -19,24 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Start setting up the email to catering department contact
         // Set the email addresses here
         $confirm_to = $email;
-        $submit_to = "christian@farmerstableboca.com";
+        
         // Set subjects
         $confirm_subject = "Contact Form Submitted Successfully!";
-        $subject_submit = "Catering Contact Form Submission";
-        // Build email body for contact form submission
-        $message_submit = '
-        <html>
-        <head>
-            <title>Contact Form Submission</title>
-        </head>
-        <body>
-        <h4>Contact Form Submission From ' . ucwords($name) . '</h4>
-        <p>Email: ' . $email . '</p>
-        <p>Phone Number: ' . $phone . '</p>
-        <p>Comments: </p>
-        <p>' . $comments . '</p>
-        </body>
-        </html>';
 
         // Build and email confirmation for the guest
         $confirmation_msg = '
@@ -50,12 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </body>
         </html>';
 
-        // Settings for the contact submission email
-        $from = "projectcgm@cmartins.pbcs.us";
-        $headers_submit = "MIME-Version: 1.0" . "\r\n";
-        $headers_submit .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-        $headers_submit .= "From: $from" . "\r\n";
-
         // Settings for the confirmation email
         $confirm_from = "christian@afkdeveloper.com";
         $headers_confirm = "MIME-Version: 1.0" . "\r\n";
@@ -64,11 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Send Confirmation Email
         mail($confirm_to, $confirm_subject, $confirmation_msg, $headers_confirm);
-        // Send Contact Submission Email
-        mail($submit_to, $subject_submit, $message_submit, $headers_submit);
-
-        // Redirect to say Thank You
-        header('location: contacts.php?status=thanks');
+        
+        // Submission Email in function
+        require_once 'inc/submit.php';
+        if (submitEmail($name, $email, $phone, $comments)) {
+            // Redirect to say Thank You
+            header('location: contacts.php?status=thanks');
+        }
     }
 }
 
