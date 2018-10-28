@@ -50,8 +50,6 @@ li {
     background: url('../images/wallpaper/woodwplg.jpg');
 }
 
-.contact-wp
-
 /* CUSTOM CLASSES */
 .farm-grn-bg {
     background-color: #908d34;
@@ -79,7 +77,7 @@ li {
 
 
 /* WRAPPER  */
-.#content {
+#content {
     min-height: 100%;
     position: relative;
 }
@@ -203,7 +201,7 @@ li {
 /* ////////////////////////////////////////
 ///////////    MENU PAGE    ////////////// */
 #menu-item-card {
-    width: 20rem;
+    width: 30rem;
     margin-top: 15px;
     border-radius: 10px;
     box-shadow: 2px 2px 2px black;
@@ -225,7 +223,7 @@ li {
     text-decoration: none;
 }
 
-#packages h1 {
+#menu-items-list h1 {
     text-align: center;
     border-bottom: 1px solid black;
     margin-bottom: 20px;
@@ -235,17 +233,13 @@ li {
     background: rgba(255, 255, 255, 0.582);
 }
 
-#menu-item-card {
-    background: url('../images/wallpaper/wood.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 #menu-item-card .card-subtitle {
     color: black;
 }
 
+.package-description p {
+    line-height: .30em;
+}
 
 
 /* Landscape phones and down */
