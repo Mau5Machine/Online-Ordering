@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // Check and filter the input
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -1,4 +1,8 @@
 <?php
+// start session
+session_start();
+$_SESSION['order'] = isset($_SESSION['order']) ? $_SESSION['order'] : array();
+
 $pageWallpaper = 'home-wp';
 $pageTitle = 'Home';
 include 'inc/header.php';

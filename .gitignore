@@ -5,3 +5,10 @@ html/
 # Don't track these files
 *.html
 inc/connect.php
+inc/mail_info.php
+/vendor/
+inc/phpmailer
+composer.json
+composer.lock
+favicon.ico
+inc/submit.php

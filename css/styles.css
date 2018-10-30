@@ -77,10 +77,10 @@ li {
 
 
 /* WRAPPER  */
-#content {
+/* #content {
     min-height: 100%;
     position: relative;
-}
+} */
 
 /* NAV */
 .navbar-brand img {
@@ -201,15 +201,17 @@ li {
 /* ////////////////////////////////////////
 ///////////    MENU PAGE    ////////////// */
 #menu-item-card {
-    width: 30rem;
+    width: 20rem;
     margin-top: 15px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 2px black;
     background: rgb(255, 255, 255);
 }
 
 #menu-item-card li {
     font-size: .90em;
+}
+
+#nav-packages .card {
+    width: 25%;
 }
 
 .card-title a {
@@ -241,6 +243,20 @@ li {
     line-height: .30em;
 }
 
+/* ////////////////////////////////////////
+///////////    CART PAGE    ////////////// */
+.order-wrapper {
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px black;
+    border: 1px solid black;
+    margin-top: 80px;
+    padding: 20px;
+}
+
+.order-row {
+    padding: 20px 0 0 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.616);
+}
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
@@ -305,17 +321,9 @@ li {
     }
 }
 
-
-
-
-
 /* FOOTER */
 footer {
-    bottom: 0;
     width: 100%;
-    height: 60px;
-    position: fixed;
-    bottom: 0;
-    /* Height of the footer */
-    color: white;
+    height: 30px;
+    display: none;
 }
