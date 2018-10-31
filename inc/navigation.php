@@ -1,8 +1,14 @@
+<?php
+// Count items in the Order
+$order_count = count($_SESSION['order']);
+?>
+
 <div class="nav-wrapper">
     <!-- Start navigation here -->
     <div class="main-nav">
         <nav class="navbar navbar-expand-lg navbar-dark farm-blue-bg">
-            <a class="navbar-brand" target="_blank" href="http://farmerstableboca.com"><img src="images/redtruck.png"
+            <a class="navbar-brand" href="order.php">
+            <img src="images/redtruck.png"
                     alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -24,19 +30,16 @@
                         <!-- menu.php -->
                         <a class="nav-link" href="menu.php">Menu</a>
                     </li>
+                    <li class="nav-item active order-item">
+                    <div class="order-icon">
+                    <a href="order.php">Order</a>
+                    <span class="badge farm-blue-bg text-white" id="comparison-count">
+                            <?= $order_count ?></span>
+               </div>
+                    </li>
                 </ul>
                 <!-- TODO: COME BACK AND STYLE THIS ALL THE WAY TO THE RIGHT -->
-                <h4>
-                    <a href="order.php" class="align-self-end mr-5">
-                        <?php
-                                // Count items in the Order
-                                $order_count = count($_SESSION['order']);
-                                ?>
-                        <img src="images/shopping-icon.png" alt="">
-                        <span class="badge badge-success" id="comparison-count">
-                            <?= $order_count ?></span>
-                    </a>
-                </h4>
+               
             </div>
         </nav>
     </div>

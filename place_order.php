@@ -18,6 +18,10 @@ include_once 'inc/header.php';
     </div>
 </div>
 
+<div class="text-center col-md-12">
+    <h5><a href="index.php">Go Back To Home Page</a></h5>
+</div>
+
 <?php
 include_once 'inc/footer.php';
 ?>

@@ -4,7 +4,6 @@ session_start();
 
 $_SESSION['order'] = isset($_SESSION['order']) ? $_SESSION['order'] : array();
 
-print_r($_SESSION['order']);
 // include connection file
 include 'inc/connect.php';
 
