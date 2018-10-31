@@ -26,9 +26,11 @@ function renderMenuItems($name, $price, $cat, $description, $id)
     echo "<div class='text-left'>{$menu_description}</div>";
         
     //  START ADD TO/UPDATE ORDER FORM + BUTTON
+    echo "<form method='get' class='add-to-order-form'>";
+
     echo "<label for='qty'>How Many People?</label>";
 
-    echo "<input type='number' class='order-qty' name='qty' class='col-4 ml-3 mb-3'>";
+    echo "<input type='number' class='order-qty' name='qty' value='1' class='col-4 ml-3 mb-3' min='1' />";
 
     // Menu id for javascript class HIDDEN
     echo "<div class='menu-id display-none'>{$id}</div>";
@@ -42,9 +44,12 @@ function renderMenuItems($name, $price, $cat, $description, $id)
         echo "<a href='order.php' class='btn btn-success w-100-pct'>Update Order</a>";
     } else {
         // ADD TO ORDER button if doesn't exist in order
-        echo "<a href='add_to_order.php?id={$id}' class='btn btn-primary w-100-pct'>Add to Order</a>";
+        echo "<button type='submit' class='btn btn-primary w-100-pct add-to-order'>Add to Order</button>";
     }
+    
     echo "</div>";
+
+    echo "</form>";
 
     echo "</div>";
 }

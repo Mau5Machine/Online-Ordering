@@ -16,7 +16,8 @@ include_once 'inc/connect.php';
 
         <p class="lead" id="banner-btn">
             <a class="btn btn-primary btn-lg" href="menu.php" role="button">Catering Menu</a>
-            <a class="btn btn-primary btn-lg" href="startOrder.php" role="button">Start Order</a>
+            <!-- TODO: Start working on the form for the guest information to start the order process -->
+            <a class="btn btn-primary btn-lg" href="#" role="button">Start Order</a>
         </p>
     </div>
 </header>

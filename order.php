@@ -2,6 +2,12 @@
 // start session
 session_start();
 
+// Check to see if anything is in order
+$_SESSION['order'] = isset($_SESSION['order']) ? $_SESSION['order'] : array();
+
+// Check for action set in URL
+$action = isset($_GET['action']) ? $_GET['action'] : "";
+
 // connect to database
 include 'inc/connect.php';
 
@@ -35,11 +41,20 @@ if (count($_SESSION['order']) > 0) {
 <div class="container order-wrapper">
 
 <?php
+echo "<div class='action-alert'>";
+    if ($action == "updated") {
+        echo "<h5 class='alert farm-bright-grn-bg' role='alert'>Quantity Update Was Successful!</h5>";
+    } elseif ($action == "removed") {
+        echo "<h5 class='alert alert-danger text-white' role='alert'>Item Successfully Deleted From Your Order.</h5>";
+    }
+
+    echo "</div>";
+
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
 
         // Set the quantity in the order
-        $quantity = $_SESSION['order'][$id]['quantity'];
+        $quantity = $_SESSION['order'][$menu_id]['quantity'];
         $sub_total = $menu_price * $quantity;
         
         echo "<div class='row order-row'>";
@@ -49,11 +64,11 @@ if (count($_SESSION['order']) > 0) {
         // update quantity
         echo "<form class='update-quantity-form'>";
 
-        echo "<div class='menu-id' style='display:none;'>{$menu_id}</div>";
+        echo "<div class='menu-id display-none'>{$menu_id}</div>";
 
         echo "<div class='input-group'>";
 
-        echo "<input type='number' name='quantity' value='{$quantity}' class='form-control order-quantity' min='1' />";
+        echo "<input type='number' name='qty' value='{$quantity}' class='form-control order-quantity' min='1' />";
 
         echo "<span class='input-group-btn'>";
 
@@ -66,7 +81,7 @@ if (count($_SESSION['order']) > 0) {
         echo "</form>";
 
         // delete from order
-        echo "<a href='remove_from_order.php?id={$menu_id}' class='btn btn-default'>Delete</a>";
+        echo "<a href='remove_from_order.php?id={$menu_id}' class='btn btn-default'><i class='fas fa-2x fa-trash-alt farm-red'></i></a>";
  
         echo "<div class='col-md-6 text-left'>";
 
@@ -110,5 +125,6 @@ else {
 }
 ?>
 </div>
+
 <?php
 include 'inc/footer.php';

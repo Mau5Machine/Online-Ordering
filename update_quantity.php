@@ -1,11 +1,10 @@
 <?php
-// FIXME: THIS PAGE IS BROKEN AND DOES NOT UPDATE THE QUANTITY, NEED TO FIX!!!!
 // start the session
 session_start();
 
 // get the menu item id
 $id = isset($_GET['id']) ? $_GET['id'] : 1;
-$quantity = isset($_GET['quantity']) ? $_GET['quantity'] : "";
+$quantity = isset($_GET['qty']) ? $_GET['qty'] : "";
 
 // make quantity a minimum of 1
 $quantity = $quantity <= 0 ? 1 : $quantity;
@@ -19,4 +18,4 @@ $_SESSION['order'][$id] = array(
 );
 
 // redirect to the order list
-header("location: order.php");
+header("location: order.php?action=updated");

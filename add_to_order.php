@@ -4,7 +4,7 @@ session_start();
 
 // get the menu id
 $id = isset($_GET['id']) ? $_GET['id'] : "";
-$qty = isset($_GET['qty']) ? $_GET['gty'] : 1;
+$qty = isset($_GET['qty']) ? $_GET['qty'] : 1;
 
 // make quantity a minimum of 1
 $qty = $qty <= 0 ? 1 : $qty;
@@ -20,7 +20,7 @@ if (!isset($_SESSION['cart'])) {
 }
 
 // check if the item is in the array, if it is, do not add
-if (array_key_exists($id, $_SESSION['cart'])) {
+if (array_key_exists($id, $_SESSION['order'])) {
     // redirect to menu page and let user know the item exists in the order already
     header("location: menu.php?action=exists&id=' . $id . '");
 }
