@@ -19,20 +19,20 @@ $order_count = count($_SESSION['order']);
                 <ul class="navbar-nav mr-auto col-md-8">
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link hvr-pop" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="contacts.php">Contact</a>
+                        <a class="nav-link hvr-pop" href="contacts.php">Contact</a>
                     </li>
 
                     <li class="nav-item">
                         <!-- menu.php -->
-                        <a class="nav-link" href="menu.php">Menu</a>
+                        <a class="nav-link hvr-pop" href="menu.php">Menu</a>
                     </li>
                     <li class="nav-item active order-item">
                     <div class="order-icon">
-                    <a href="order.php">Order</a>
+                    <a href="order.php" class="hvr-pop">Order</a>
                     <span class="badge farm-blue-bg text-white" id="comparison-count">
                             <?= $order_count ?></span>
                </div>

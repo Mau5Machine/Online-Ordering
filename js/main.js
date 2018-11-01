@@ -12,11 +12,24 @@ $(document).ready(function () {
         return false;
     });
 
+    // This Javascript holds the tab in place after refresh
+    $(document).ready(function () {
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+        var activeTab = localStorage.getItem('activeTab');
+        if (activeTab) {
+            $('#nav-tab a[href="' + activeTab + '"]').tab('show');
+        }
+    });
+
+    // Timeout function for the alerts
     window.setTimeout(function () {
         $(".alert").fadeTo(500, 0).slideUp(500, function () {
             $(this).remove();
         });
-    }, 3000);
+    }, 1500);
+
     // update quantity button listener
     $('.update-quantity-form').on('submit', function () {
 
@@ -28,5 +41,6 @@ $(document).ready(function () {
         window.location.href = "update_quantity.php?id=" + id + "&qty=" + quantity;
         return false;
     });
+
 
 });

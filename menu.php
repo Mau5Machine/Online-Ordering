@@ -17,7 +17,7 @@ $menu = new Menu($pdo);
 $action = isset($_GET['action']) ? $_GET['action'] : "";
 
 // page wallpaper
-$pageWallpaper = 'home-wp';
+$pageWallpaper = 'menu-wp';
 
 // page title
 $pageTitle = 'Menu';
@@ -36,21 +36,21 @@ include 'inc/menu_nav.php';
 <!-- Start Menu Panels Here! -->
 <div class="tab-content" id="nav-tabContent">
 
-  <div class="tab-pane fade  show active" id="nav-packages" role="tabpanel" aria-labelledby="nav-packages-tab">
+  <div class="tab-pane fade show active" id="nav-packages" role="tabpanel" aria-labelledby="nav-packages-tab">
 
     <!-- PACKAGES TABBED PAGE GOES IN HERE!!!!! -->
     <!-- //////////////////////////////////////// -->
     <?php
-    $sectionName = "Packages";
+    $sectionName = "images/text/packages-text.png";
     ?>
 
     <!-- Package items in this container -->
     <article id="menu-items-list">
-      <h1>
-        <?= $sectionName ?>
-      </h1>
+      <div class="row col-md-12 section-header">
+        <img class="img-fluid section-header" src="<?= $sectionName ?>">
+      </div>
 
-      <div class="menu-card-wrapper d-flex justify-content-around flex-wrap">
+      <div class="menu-card-wrapper d-flex justify-content-center flex-wrap">
 
         <?php
         // read all menu items from the database
@@ -71,15 +71,15 @@ include 'inc/menu_nav.php';
     <!--MENU TABBED PAGE GOES IN HERE!!!!! -->
     <!-- //////////////////////////////////////// -->
     <?php
-    $sectionName = "Menu Items";
+    $sectionName = "images/text/menu-items-text.png";
     ?>
 
     <!-- Menu items in this container -->
     <article id="menu-items-list">
-      <h1>
-        <?= $sectionName ?>
-      </h1>
-    <!-- TODO: Add a filter selector input here to choose the category to view (Handhelds, Entree, Salads, Sides, Etc..) -->
+      <div class="row col-md-12 section-header">
+        <img class="img-fluid" src="<?= $sectionName ?>">
+      </div>
+      <!-- TODO: Add a filter selector input here to choose the category to view (Handhelds, Entree, Salads, Sides, Etc..) -->
 
       <div class="menu-card-wrapper d-flex justify-content-center flex-wrap">
 
@@ -102,14 +102,14 @@ include 'inc/menu_nav.php';
     <!--DESSERT TABBED PAGE GOES IN HERE!!!!! -->
     <!-- //////////////////////////////////////// -->
     <?php
-    $sectionName = "Desserts";
+    $sectionName = "images/text/desserts.png";
     ?>
 
     <!-- Dessert items in this container -->
     <article id="menu-items-list">
-      <h1>
-        <?= $sectionName ?>
-      </h1>
+      <div class="row col-md-12 section-header">
+        <img class="img-fluid" src="<?= $sectionName ?>">
+      </div>
 
       <div class="menu-card-wrapper d-flex justify-content-around flex-wrap">
 

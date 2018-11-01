@@ -32,16 +32,16 @@ include_once 'inc/connect.php';
     <div class="row  d-flex justify-content-around">
 
         <!-- How it works cards -->
-        <aside class="card bg-light mb-3" style="max-width: 20rem;">
+        <aside class="card bg-light mb-3" style="max-width: 25rem;">
             <div class="card-header text-center farm-red-bg">
-                <h4>Choose your items</h4>
+                <h4>Choose Your Items</h4>
             </div>
             <div class="card-body">
-                <h4 class="card-title">Build your order</h4>
+                <h4 class="card-title">Browse The Menu</h4>
                 <p class="car-text">
-                    &bull; Specify a date & time for pickup</br>
-                    &bull; Choose your items</br>
-                    &bull; Review your order</br>
+                    &bull; Add items to your order</br>
+                    &bull; Review the order for any mistakes</br>
+                    &bull; Provide contact information at prompt</br>
                     &bull; Submit!</br>
                     &bull; Check your email for verification</br>
                 </p>
@@ -52,19 +52,19 @@ include_once 'inc/connect.php';
 
         <!-- Arrow to next card goes here -->
         <div class="arrow">
-            <img src="images/arrow.png" alt="" id="how-it-works-transfer">
+            <img src="images/chef-icon.png" alt="chef icon" id="how-it-works-transfer">
         </div>
 
         <!-- Second card here -->
-        <aside class="card bg-light mb-3" style="max-width: 20rem;">
+        <aside class="card bg-light mb-3" style="max-width: 25rem;">
             <div class="card-header text-center farm-red-bg">
                 <h4>Prep Time!</h4>
             </div>
             <div class="card-body">
                 <h4 class="card-title">Time to cook</h4>
                 <p class="card-text">
-                    &bull; An email is sent<br>
-                    &bull; We verify the order with you<br>
+                    &bull; Catering department receives your order<br>
+                    &bull; We verify the order with you over the phone<br>
                     &bull; Fresh & healthy cooking takes place<br>
                     &bull; You get a call to come pick up your order!<br>
                 </p>

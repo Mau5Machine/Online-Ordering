@@ -40,7 +40,7 @@ if (count($_SESSION['order']) > 0) {
 
 <div class="container order-wrapper">
 
-<?php
+    <?php
 echo "<div class='action-alert'>";
     if ($action == "updated") {
         echo "<h5 class='alert farm-bright-grn-bg' role='alert'>Quantity Update Was Successful!</h5>";
@@ -72,7 +72,7 @@ echo "<div class='action-alert'>";
 
         echo "<span class='input-group-btn'>";
 
-        echo "<button class='btn btn-default update-quantity' type='submit'>Update</button>";
+        echo "<button class='btn btn-primary update-quantity' type='submit'>Update</button>";
 
         echo "</span>";
 

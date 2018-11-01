@@ -42,8 +42,18 @@ li {
     font-size: 16px;
 }
 
+#menu-wp {
+    background: url('../images/wallpaper/blue-fig-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 #home-wp {
     background: url('../images/wallpaper/green-background-layer.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #contact-wp {
@@ -86,6 +96,7 @@ li {
     border-radius: 10px;
 }
 
+
 /* WRAPPER  */
 /* #content {
     min-height: 100%;
@@ -99,8 +110,22 @@ li {
     box-shadow: 2px 2px 5px black;
 }
 
-.order-icon a {
+#nav-tab {
+    background: white;
+    border-bottom: 1px solid black;
+    padding: 5px 0;
+}
+
+#nav-tab a {
     color: black;
+}
+
+.nav-item a {
+    text-shadow: 2px 2px 2px black;
+}
+
+.order-icon a {
+    color: white;
     margin-left: 20px;
     font-weight: bold;
 }
@@ -228,10 +253,34 @@ li {
 
 /* ////////////////////////////////////////
 ///////////    MENU PAGE    ////////////// */
+.menu-card-wrapper {
+    background: #ffffff;
+    padding: 20px 0;
+    border: 1px solid black;
+}
+
+.menu-nav a {
+    text-shadow: 2px 2px 2px #808080;
+    padding: 10px 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-left: 9px;
+}
+
+.menu-nav a:hover {
+    text-decoration: none;
+}
+
+.section-header img {
+    margin: 0 auto;
+}
+
 #menu-item-card {
     width: 25rem;
     margin-top: 15px;
     background: rgb(255, 255, 255);
+    border: 1px solid black;
 }
 
 #menu-item-card li {
@@ -279,6 +328,7 @@ li {
     border: 1px solid black;
     margin-top: 80px;
     padding: 20px;
+    background: rgb(214, 214, 214);
 }
 
 .order-row {

@@ -53,3 +53,5 @@ function renderMenuItems($name, $price, $cat, $description, $id)
 
     echo "</div>";
 }
+?>
+
