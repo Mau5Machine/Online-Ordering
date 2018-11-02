@@ -1,4 +1,4 @@
-<section id="menu-tabs">
+<section>
     <!-- Container for the entire Menu Nav Section + Content -->
 
     <div class="menu-nav">

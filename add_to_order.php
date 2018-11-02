@@ -15,8 +15,8 @@ $order_item = array(
 );
 
 // check if cart session was created, if NOT, create cart session array
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = array();
+if (!isset($_SESSION['order'])) {
+    $_SESSION['order'] = array();
 }
 
 // check if the item is in the array, if it is, do not add

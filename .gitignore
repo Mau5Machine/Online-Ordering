@@ -13,3 +13,5 @@ composer.lock
 favicon.ico
 inc/submit.php
 alt/
+inc/login.php
+data/

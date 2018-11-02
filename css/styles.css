@@ -42,6 +42,13 @@ li {
     font-size: 16px;
 }
 
+#default-wp {
+    background: url('../images/wallpaper/blue-fig-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 #menu-wp {
     background: url('../images/wallpaper/blue-fig-bg.jpg');
     background-size: cover;
@@ -58,6 +65,9 @@ li {
 
 #contact-wp {
     background: url('../images/wallpaper/woodwplg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* CUSTOM CLASSES */
@@ -124,22 +134,20 @@ li {
     text-shadow: 2px 2px 2px black;
 }
 
-.order-icon a {
-    color: white;
-    margin-left: 20px;
-    font-weight: bold;
-}
-
 .order-icon a:hover {
     text-decoration: none;
 }
 
-.order-item {
+.order-icon {
     background: #8DC63F;
-    padding: 5px;
-    border-radius: 10px;
+    padding: 0 10px;
     border: 1px solid black;
-    box-shadow: 2px 2px 5px black;
+    border-radius: 6px;
+}
+
+.order-icon i {
+    color: black;
+    font-size: 2.5em;
 }
 
 /* MODAL */
@@ -235,20 +243,16 @@ li {
     display: none;
 }
 
-.error-msg {
-    background: rgb(194, 88, 55);
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    color: white;
+.error {
+    color: red;
 }
 
-.success-msg {
+.default-msg-contact {
     background: #8DC63F;
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
-    color: black;
+    line-height: 1.5em;
 }
 
 /* ////////////////////////////////////////
@@ -270,6 +274,30 @@ li {
 
 .menu-nav a:hover {
     text-decoration: none;
+}
+
+.form-container {
+    margin-bottom: 10px;
+}
+
+.form-container input {
+    border: 1px solid white;
+    box-shadow: 2px 2px 5px black;
+    margin-bottom: 5px;
+}
+
+.form-container select {
+    margin-left: 10px;
+}
+
+.form-container label {
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-size: 1.5em;
+}
+
+#filter {
+    padding: 10px;
 }
 
 .section-header img {
@@ -328,12 +356,29 @@ li {
     border: 1px solid black;
     margin-top: 80px;
     padding: 20px;
-    background: rgb(214, 214, 214);
+    background: rgb(255, 255, 255);
+}
+
+#order-banner {
+    background: white;
+}
+
+#order-banner img {
+    margin: 0 auto;
+}
+
+.custom-badge {
+    background: #551313;
+    color: white;
+    font-size: .80em;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 5px;
 }
 
 .order-row {
     padding: 20px 0 0 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.616);
+    border-bottom: 1px solid rgba(85, 85, 85, 0.616);
 }
 
 /* Landscape phones and down */
@@ -374,6 +419,12 @@ li {
 
     .map iframe {
         width: 100%;
+    }
+
+    .form-container label {
+        color: white;
+        text-shadow: 2px 2px 2px black;
+        font-size: 1em;
     }
 }
 

@@ -102,21 +102,43 @@ class Menu
     }
 
     // function to get menu_items
-    public function get_menu()
+    public function get_menu($filter = null)
     {
         $sql = "SELECT menu_id, menu_name, menu_price, menu_description, categories.category_title 
-              FROM menu 
-              LEFT JOIN categories 
-              ON (categories.category_id = menu.categories_category_id) 
-              WHERE menu.categories_category_id > 5 ORDER BY menu.categories_category_id DESC";
+        FROM menu 
+        LEFT JOIN categories 
+        ON (categories.category_id = menu.categories_category_id) 
+        WHERE categories.category_id > 5";
 
-        // prepare
-        $stmt = $this->conn->prepare($sql);
+        $where = "";
+        $orderBy = " ORDER BY categories.category_title ASC";
 
-        // execute
-        $stmt->execute();
-
-        return $stmt;
+        // If there is no filter, return all results
+        if (!isset($filter) || $filter == null || $filter == 'All') {
+            // prepare
+            $stmt = $this->conn->prepare($sql . $orderBy);
+            // execute
+            $stmt->execute();
+            return $stmt;
+        // Else return the filtered category value results
+        } else {
+            switch ($filter) {
+                case 'Handhelds':
+                $where = " AND categories.category_title = 'Handhelds'";
+                break;
+                case 'Salads':
+                $where = " AND categories.category_title = 'Salads'";
+                break;
+                case 'Entree':
+                $where = " AND categories.category_title = 'Entree'";
+                break;
+            }
+            // prepare
+            $stmt = $this->conn->prepare($sql . $where . $orderBy);
+            // execute
+            $stmt->execute();
+            return $stmt;
+        }
     }
 
     // function to get menu desserts

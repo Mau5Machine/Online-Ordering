@@ -7,24 +7,19 @@
     </title>
     <!-- Favicon Here -->
     <link rel="shortcut icon" href="favicon.ico" type="image/icon">
-    <!-- jQuery UI and jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery UI styles -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <!-- Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
-        crossorigin="anonymous"></script>
-    <!-- My JS Here -->
-    <script src="js/main.js"></script>
     <!-- Hover CSS -->
     <link rel="stylesheet" href="css/hover.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
         crossorigin="anonymous">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Animsition jQuery Plugin -->
+    <link rel="stylesheet" href="css/animsition.min.css">
     <!-- Personal Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/custom.css">
@@ -33,9 +28,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
-<body id="<?= $pageWallpaper ?>">
-    
-    <?php include 'navigation.php'; ?>
+<body id="default-wp">
+
+    <?php
+    // Check for get status in url
+    $status = isset($_GET['status']) ? $_GET['status'] : "";
+
+    if ($status == 'thanks') {
+        ?>
+    <div class="modal" tabindex="-1" role="dialog" id="thanks-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thank You!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Thank You For Your Message! Someone will be in touch with you soon.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+    } ?>
+
+
+    <?php
+    ///////// Navigation in here //////////
+    include 'navigation.php'; ?>
+    <!-- Button trigger modal -->
+
 
     <!-- Wrapper for the entire document -->
     <div class="wrapper" id="content">

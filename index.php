@@ -3,12 +3,12 @@
 session_start();
 $_SESSION['order'] = isset($_SESSION['order']) ? $_SESSION['order'] : array();
 
-$pageWallpaper = 'home-wp';
 $pageTitle = 'Home';
+
 include 'inc/header.php';
-include_once 'inc/connect.php';
 ?>
 
+<div class="home-wrapper animsition">
 <!-- Banner Goes Here -->
 <header id="banner">
     <div class="jumbotron transp-grey text-center">
@@ -89,6 +89,8 @@ include_once 'inc/connect.php';
     </div>
 </article>
 <!-- End location -->
+
+</div>
 
 <?php
 include 'inc/footer.php';

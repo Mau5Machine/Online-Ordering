@@ -37,11 +37,13 @@ if (count($_SESSION['order']) > 0) {
 
     $total = 0;
     $item_count = 0; ?>
-
-<div class="container order-wrapper">
+<div class="row" id="order-banner">
+    <img src="images/text/your-order-text.png" alt="your order text" class="img-fluid">
+</div>
+<div class="container order-wrapper animsition">
 
     <?php
-echo "<div class='action-alert'>";
+    echo "<div class='action-alert'>";
     if ($action == "updated") {
         echo "<h5 class='alert farm-bright-grn-bg' role='alert'>Quantity Update Was Successful!</h5>";
     } elseif ($action == "removed") {
@@ -56,8 +58,8 @@ echo "<div class='action-alert'>";
         // Set the quantity in the order
         $quantity = $_SESSION['order'][$menu_id]['quantity'];
         $sub_total = $menu_price * $quantity;
-        
-        echo "<div class='row order-row'>";
+
+        echo "<div class='row order-row mx-4'>";
 
         echo "<div class='col-md-8 item-name m-b-10px'><h5>{$menu_name}</h5></div>";
 
@@ -81,17 +83,19 @@ echo "<div class='action-alert'>";
         echo "</form>";
 
         // delete from order
-        echo "<a href='remove_from_order.php?id={$menu_id}' class='btn btn-default'><i class='fas fa-2x fa-trash-alt farm-red'></i></a>";
- 
-        echo "<div class='col-md-6 text-left'>";
+        echo "<a href='remove_from_order.php?id={$menu_id}&name={$menu_name}' id='delete' class='btn btn-default'>";
+        
+        echo "<i class='fas fa-2x fa-trash-alt farm-red'></i></a>";
 
-        echo "<p class='badge badge-info'>&#36;" . number_format($menu_price, 2, '.', ',') . " per person</p>";
+        echo "<div class='col-md-2 text-center'>";
+
+        echo "<p class='custom-badge'>&#36;" . number_format($menu_price, 2, '.', ',') . " per person</p>";
 
         echo "</div>";
         // =================
- 
+
         $item_count += $quantity;
-        $total+=$sub_total;
+        $total += $sub_total;
 
         echo "</div>";
     }
@@ -113,18 +117,31 @@ echo "<div class='action-alert'>";
 
 // no products were added to order
 else {
-    echo "<div class='col-md-12'>";
+    ?>
 
-    echo "<div class='alert alert-danger'>";
+    <div class="modal" tabindex="-1" role="dialog" id="empty-cart-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nothing Ordered Yet!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Your Order is empty! Try choosing some items from the menu first.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    echo "No products found in your order!";
-
-    echo "</div>";
-
-    echo "</div>";
+    <?php
+header('location: menu.php');
 }
 ?>
-</div>
 
-<?php
+    <?php
 include 'inc/footer.php';
