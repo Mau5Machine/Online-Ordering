@@ -83,6 +83,13 @@ class Menu
         return $stmt;
     }
 
+    // Check if a cart item exists
+    public function exists()
+    {
+
+        // query to count existing cart item
+    }
+
     // function to read by category
     public function get_packages()
     {
@@ -108,7 +115,7 @@ class Menu
         FROM menu 
         LEFT JOIN categories 
         ON (categories.category_id = menu.categories_category_id) 
-        WHERE categories.category_id > 5";
+        WHERE categories.category_id > 4";
 
         $where = "";
         $orderBy = " ORDER BY categories.category_title ASC";
@@ -132,6 +139,9 @@ class Menu
                 case 'Entree':
                 $where = " AND categories.category_title = 'Entree'";
                 break;
+                case 'Dessert':
+                $where = " AND categories.category_title = 'Dessert'";
+                break;
             }
             // prepare
             $stmt = $this->conn->prepare($sql . $where . $orderBy);
@@ -139,23 +149,5 @@ class Menu
             $stmt->execute();
             return $stmt;
         }
-    }
-
-    // function to get menu desserts
-    public function get_desserts()
-    {
-        $sql = "SELECT menu_id, menu_name, menu_price, menu_description, categories.category_title 
-              FROM menu 
-              LEFT JOIN categories 
-              ON (categories.category_id = menu.categories_category_id) 
-              WHERE menu.categories_category_id = 5 ORDER BY menu.categories_category_id DESC";
-
-        // prepare
-        $stmt = $this->conn->prepare($sql);
-
-        // execute
-        $stmt->execute();
-
-        return $stmt;
     }
 }

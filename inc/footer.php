@@ -17,11 +17,10 @@
     crossorigin="anonymous"></script>
 <!-- jQuery Form Validator -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
-<!-- jQuery Animsition Js Here -->
-<script src="js/animsition.min.js"></script>
 <!-- My JS Here -->
 <script src="js/main.js"></script>
 </body>
+<!-- Thank You for Submitting Contact Form Modal -->
 <script>
     $('#thanks-modal').modal('show');
 </script>

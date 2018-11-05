@@ -8,8 +8,7 @@ $order_count = count($_SESSION['order']);
     <div class="main-nav">
         <nav class="navbar navbar-expand-lg navbar-dark farm-blue-bg">
             <a class="navbar-brand" target="_blank" href="http://farmerstableboca.com">
-            <img src="images/redtruck.png"
-                    alt="logo"></a>
+                <img src="images/redtruck.png" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -19,26 +18,27 @@ $order_count = count($_SESSION['order']);
                 <ul class="navbar-nav mr-auto col-md-8">
 
                     <li class="nav-item active">
-                        <a class="nav-link hvr-pop animsition-link" href="index.php">Home 
-                        <i class="material-icons">
-                        home
-                        </i>
-                        <span class="sr-only">(current)</span></a>
+                        <a class="nav-link hvr-pop" href="index.php">
+                            <i class="material-icons mr-2">
+                                home
+                            </i>Home
+
+                            <span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link hvr-pop animsition-link" href="contacts.php">Contact 
-                        <i class="material-icons">
-                        email
-                        </i></a>
+                        <a class="nav-link hvr-pop" href="contacts.php">
+                            <i class="material-icons mr-2">
+                                email
+                            </i>Contact </a>
                     </li>
 
                     <li class="nav-item">
                         <!-- menu.php -->
-                        <a class="nav-link hvr-pop animsition-link" href="menu.php">Menu 
-                        <i class="material-icons">
-                        restaurant_menu
-                        </i></a>
+                        <a class="nav-link hvr-pop" href="menu.php">
+                            <i class="material-icons mr-2">
+                                restaurant_menu
+                            </i>Menu </a>
                     </li>
                 </ul>
                 <!-- TODO: COME BACK AND STYLE THIS ALL THE WAY TO THE RIGHT -->
@@ -46,7 +46,7 @@ $order_count = count($_SESSION['order']);
                     <?php
                     if (count($_SESSION['order']) > 0) {
                         // Link to Cart Page
-                        echo "<a href='order.php' class='hvr-pop btn animsition-link'>";
+                        echo "<a href='order.php' class='hvr-pop btn'>";
                         echo "<i class='material-icons'>shopping_cart";
                         echo "</i></a>";
                         echo "<span class='badge farm-blue-bg text-white' id='comparison-count'>";

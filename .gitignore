@@ -15,3 +15,5 @@ inc/submit.php
 alt/
 inc/login.php
 data/
+classes/cart_item.php
+js/moment.min.js

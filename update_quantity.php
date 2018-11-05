@@ -3,8 +3,8 @@
 session_start();
 
 // get the menu item id
-$id = isset($_GET['id']) ? $_GET['id'] : 1;
-$quantity = isset($_GET['qty']) ? $_GET['qty'] : "";
+$id = isset($_POST['id']) ? $_POST['id'] : 1;
+$quantity = isset($_POST['qty']) ? $_POST['qty'] : "";
 
 // make quantity a minimum of 1
 $quantity = $quantity <= 0 ? 1 : $quantity;

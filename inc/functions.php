@@ -18,29 +18,27 @@ function renderMenuItems($name, $price, $cat, $description, $id)
 
     echo "<div class='text-left'>{$menu_description}</div>";
     //  START ADD TO/UPDATE ORDER FORM + BUTTON
-    echo "<form method='get' class='add-to-order-form'>";
+    echo "<form method='post' class='add-to-order-form'>";
     echo "<label for='qty'>";
     echo "How Many People? <i class='material-icons'>people</i>";
-    echo "</label>";
-    echo "<input type='number' class='order-qty' name='qty' value='1' class='col-4 ml-3 mb-3' min='1' />";
+    echo "</label><br>";
+    echo "<input type='number' class='order-qty' name='qty' value='8' class='col-3 ml-3 mb-3' min='8' />";
     // Menu id for javascript class HIDDEN
     echo "<div class='menu-id display-none'>{$id}</div>";
     echo "</div>";
     echo " <div class='card-footer'>";
-
     if (array_key_exists($id, $_SESSION['order'])) {
         // Change button to UPDATE ORDER if already in the order
         echo "<a href='order.php' class='btn btn-success w-100-pct'>Update Order</a>";
     } else {
         // ADD TO ORDER button if doesn't exist in order
-        echo "<button type='submit' class='btn btn-primary w-100-pct add-to-order'>Add to Order</button>";
+        echo "<button type='submit' class='btn btn-primary w-100-pct' id={$id}>Add to Order</button>";
     }
 
     echo "</div>";
     echo "</form>";
     echo "</div>";
 }
-
-
 ?>
+
 

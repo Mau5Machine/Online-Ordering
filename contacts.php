@@ -1,8 +1,10 @@
 <?php
 // Start the session
 session_start();
+
 // Grab Users Name for the Session
 $_SESSION['user'] = array();
+
 // Import PHPMailer into global namespace
 require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require 'vendor/phpmailer/phpmailer/src/Exception.php';
@@ -19,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['user']['phone'] = $phone;
     $comments = trim(filter_input(INPUT_POST, 'comments', FILTER_SANITIZE_SPECIAL_CHARS));
     
+    
     // Checking if hidden address form is filled out for humans
     if (!isset($error_message) && $_POST['address'] != "") {
         $error_message = "Bad form input";
@@ -32,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if error message is set
     if (!isset($error_message)) {
         // include once the login constants
-        include_once 'inc/login.php';
+        // include 'inc/login.php';
         //////// Start Submission Email /////////
         $msg_body = "Contact Form Submitted on " . date('m-d-Y') . "\n";
         $msg_body .= "From: " . ucwords($name) . "\n";
@@ -41,16 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $msg_body .= "Message Body: " . $comments . "\n";
 
         $mail = new PHPMailer;
-        $mail->isSMTP();
-        // $mail->SMTPDebug = 2;
-        $mail->Host = 'smtp.gmail.com';
-        $mail->Port = 587;
-        $mail->SMTPSecure = 'tls';
-        $mail->SMTPAuth = true;
-        $mail->Username = GMAIL_USER;
-        $mail->Password = APP_PASS;
+        $mail->SMTPDebug = 2;
         // set who the email is sent from
-        $mail->setFrom('christian@farmerstableboca.com', 'Catering Department');
+        $mail->setFrom('projectcgm@cmartins.pbcs.us', 'Catering Department');
+        // Set an alternative reply to address
+        $mail->addReplyTo('cmartins629@gmail.com', 'Christian Martins');
         // set who the email is sent to
         $mail->addAddress('christian@farmerstableboca.com', 'Christian Martins');
         // attach subject and body to the email
@@ -61,24 +59,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($mail->send()) {
          
             ////// Start Thank You Email //////////
-            $mail = new PHPMailer;
-            $mail->isSMTP();
-            // $mail->SMTPDebug = 2;
-            $mail->Host = 'smtp.gmail.com';
-            $mail->Port = 587;
-            $mail->SMTPSecure = 'tls';
-            $mail->SMTPAuth = true;
-            $mail->Username = GMAIL_USER;
-            $mail->Password = APP_PASS;
+            $confirmation_mail = new PHPMailer;
             // set who the email is sent from
-            $mail->setFrom('christian@farmerstableboca.com', 'Catering Department');
+            $confirmation_mail->setFrom('projectcgm@cmartins.pbcs.us', 'Catering Department');
             // set who the email is sent to
-            $mail->addAddress($email, 'Christian Martins');
+            $confirmation_mail->addAddress($email, 'Christian Martins');
             // attach subject and body to the email
-            $mail->Subject = 'Contact Form Submitted on ' . date('d-m-Y');
-            $mail->msgHTML(file_get_contents('contents.html'), __DIR__);
-            $mail->AltBody = $confirmation_body;
-            if ($mail->send()) {
+            $confirmation_mail->Subject = 'Contact Form Submitted on ' . date('m-d-Y');
+            // attach the html document for the body of email
+            $confirmation_mail->msgHTML(file_get_contents('contents.html'), __DIR__);
+            if ($confirmation_mail->send()) {
                 header('location: index.php?status=thanks');
                 exit;
             }
@@ -89,11 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $pageTitle = 'Contact Us';
-include 'inc/header.php';
+include_once 'inc/header.php';
 ?>
 
 <!-- Start BODY CONTENT FOR CONTACT PAGE HERE -->
-<div class="animsition">
+<div class="contact-wrapper">
 
     <div id="contact-panel" class="container">
         <div class="row">
@@ -124,7 +114,6 @@ include 'inc/header.php';
                     <input type="text" class="form-control" id="nameField" placeholder="Full Name" name="name" value="<?php if (isset($name) && $name != "") {
                 echo trim($name);
             } ?>">
-                <span class="empty-name display-none">Please fill in the required field</span>
                 </div>
 
                 <!-- Email Field Here -->
@@ -134,7 +123,6 @@ include 'inc/header.php';
                         value="<?php if (isset($email)) {
                 echo trim($email);
             } ?>">
-                <span class="empty-email display-none">Please fill in the required field</span>
                 </div>
 
                 <!-- Phone Number Field Here -->
@@ -144,14 +132,14 @@ include 'inc/header.php';
                         value="<?php if (isset($phone)) {
                 echo trim($phone);
             } ?>">
-                <span class="empty-phone display-none">Please fill in the required field</span>
                 </div>
 
                 <!-- Comments Field Here -->
                 <div class="form-group col-sm-12 col-md-6">
                     <label for="comments">Comments & Suggestions</label>
-                    <textarea name="comments" placeholder='Message Here' id="comments" class="form-control" rows="5"></textarea>
-                    <span class="empty-comments display-none">Please fill in the required field</span>
+                    <textarea name="comments" placeholder='Message Here' id="comments" class="form-control" rows="5"><?php if (isset($comments)) {
+                echo trim($comments);
+            } ?></textarea>
                 </div>
 
                 <!-- Hidden Field Here -->
@@ -169,5 +157,5 @@ include 'inc/header.php';
     </div> <!-- END CONTENT BODY HERE -->
  
     <?php
-    include 'inc/footer.php';
+    include_once 'inc/footer.php';
     ?>

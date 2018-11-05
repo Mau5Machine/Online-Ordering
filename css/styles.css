@@ -42,29 +42,13 @@ li {
     font-size: 16px;
 }
 
+.display-none {
+    display: none;
+}
+
 #default-wp {
     background: url('../images/wallpaper/blue-fig-bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#menu-wp {
-    background: url('../images/wallpaper/blue-fig-bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#home-wp {
-    background: url('../images/wallpaper/green-background-layer.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-#contact-wp {
-    background: url('../images/wallpaper/woodwplg.jpg');
+    background-color: #00698F;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -105,7 +89,6 @@ li {
     border: 1px solid black;
     border-radius: 10px;
 }
-
 
 /* WRAPPER  */
 /* #content {
@@ -154,9 +137,6 @@ li {
 
 /* ////////////////////////////////////////
 ///////////    HOME PAGE    ////////////// */
-
-/* JUMBOTRON HEADER */
-/* .jumbotron {} */
 
 /* CONTENT */
 /* HOW IT WORKS */
@@ -367,18 +347,101 @@ li {
     margin: 0 auto;
 }
 
-.custom-badge {
-    background: #551313;
-    color: white;
-    font-size: .80em;
-    border-radius: 10px;
-    border: 1px solid black;
-    padding: 5px;
+.price-each {
+    padding: 10px 0;
+}
+
+.order-qty {
+    width: 100px;
 }
 
 .order-row {
     padding: 20px 0 0 0;
     border-bottom: 1px solid rgba(85, 85, 85, 0.616);
+}
+
+.update-quantity-form {
+    width: 150px;
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+/* ////////////////////////////////////////
+///////////    CHECKOUT PAGE    ////////////// */
+/* SEND ORDER HEADER  */
+#send-order-header {
+    background: white;
+    margin-bottom: 20px;
+}
+
+/* ORDER SUMMARY STYLING */
+.order-summary-header {
+    background: #8DC63F;
+    border: 1px solid black;
+    padding: 10px 0;
+    margin-bottom: -10px;
+}
+
+#order-half table {
+    border: 1px solid black;
+    background: white;
+}
+
+#order-half td {
+    padding: 15px 0;
+}
+
+#order-half th {
+    background: #B3292E;
+    color: white;
+}
+
+.totals-numbers {
+    margin-left: 20px;
+}
+
+/* FORM STYLING */
+#form-half {
+    background: white;
+    padding: 40px;
+    border: 1px solid black;
+}
+
+/* ////////////////////////////////////////
+///////////   START ORDER MODAL    ////////////// */
+#modalStartOrder input {
+    border: 0;
+    border-bottom: 1px solid black;
+}
+
+#popover-notice {
+    border-radius: 8px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 3px black;
+}
+
+.fa-user,
+.fa-calendar,
+.fa-envelope,
+.fa-clock,
+.fa-phone {
+    color: #00698F;
+}
+
+.pickup-times {
+    line-height: 1.1em;
+    font-size: .80em;
+    margin: 0 auto;
+    background: #908d34;
+    padding: 10px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 10px black;
+    border-radius: 8px;
+}
+
+#start-btn {
+    box-shadow: 2px 2px 3px black;
+    border: 1px solid white;
 }
 
 /* Landscape phones and down */
@@ -426,6 +489,14 @@ li {
         text-shadow: 2px 2px 2px black;
         font-size: 1em;
     }
+
+    .update-quantity-form {
+        margin: 0 auto;
+    }
+    .item-name {
+        text-align: center;
+    }
+
 }
 
 /* Landscape phone to portrait tablet */

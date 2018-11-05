@@ -6,11 +6,53 @@ $(document).ready(function () {
         // Grab id and quantity variables
         var id = $(this).find('.menu-id').text();
         var quantity = $(this).find('.order-qty').val();
+        var addInfo = 'id=' + id + '&qty=' + quantity;
 
-        // redirect to add_to_cart.php, with parameter values to process the request
-        window.location.href = "add_to_order.php?id=" + id + "&qty=" + quantity;
+        $.ajax({
+            type: "POST",
+            url: "add_to_order.php",
+            data: addInfo,
+            success: function (data) {
+                location.reload();
+            }
+        });
         return false;
     });
+
+    // update quantity button listener
+    $('.update-quantity-form').on('submit', function () {
+
+        // get basic information for updating the order items
+        var id = $(this).find('.menu-id').text();
+        var quantity = $(this).find('.order-quantity').val();
+        var updateInfo = 'id=' + id + '&qty=' + quantity;
+
+        $.ajax({
+            type: "POST",
+            url: "update_quantity.php",
+            data: updateInfo,
+            success: function (data) {
+                location.reload();
+            }
+        });
+        return false;
+    });
+
+    // Js to store contact form submission in database
+    $('#contact-form').on('submit', function () {
+        var name = $('#nameField').val();
+        var email = $('#emailField').val();
+        var phone = $('#phoneField').val();
+        var message = $('#comments').val();
+        var query = 'name=' + name + '&email=' + email + '&phone=' + phone + '&comments=' + message;
+
+        $.ajax({
+            type: "POST",
+            url: "inc/contact_form_store.php",
+            data: query
+        });
+    });
+
 
     // This Javascript holds the tab in place after refresh
     $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
@@ -21,7 +63,60 @@ $(document).ready(function () {
         $('#nav-tab a[href="' + activeTab + '"]').tab('show');
     }
 
+    // Click event to trigger modal on main page "start Order"
+    $('#startOrderBtn').on('click', function () {
+        // modal start order behavior
+        $('#modalStartOrder').modal('show');
+    });
+
+
     // Form validation code here
+    // start order form validation
+    $('#pickup-details-form').validate({
+        rules: {
+            // The key name is on the left is name attribute
+            // of input field. Rules are defined on right side
+            order_user: "required",
+            order_email: {
+                required: true,
+                // Specify that email should be validated by
+                // the built-in "email" rule
+                email: true
+            },
+            order_phone: {
+                required: true,
+                minlength: 10
+            },
+            order_date: {
+                required: true,
+                minlength: 8
+            },
+            order_time: {
+                required: true,
+            }
+        },
+        // Specify validation error messages
+        message: {
+            order_user: "Please provide your full name",
+            order_email: "Please enter a valid email address",
+            order_phone: {
+                required: "Please enter a phone number",
+                minlength: "Phone number must be at least 10 digits"
+            },
+            order_date: {
+                required: "Please enter a valid date",
+                minlength: "Date Format MM/DD/YYY"
+            },
+            order_time: {
+                required: "Please enter a valid time",
+                minlength: "Time Format HH:MM PM/AM"
+            },
+            // Make sure the form is submitted
+            submitHandler: function (form) {
+                form.submit();
+            }
+        }
+    });
     // initialize form validation on the contact form
     $('#contact-form').validate({
         // Specify validation rules
@@ -70,42 +165,44 @@ $(document).ready(function () {
         });
     }, 1500);
 
-    // update quantity button listener
-    $('.update-quantity-form').on('submit', function () {
-
-        // get basic information for updating the order items
-        var id = $(this).find('.menu-id').text();
-        var quantity = $(this).find('.order-quantity').val();
-
-        // redirect to update_quantity.php, with parameter values to process the request
-        window.location.href = "update_quantity.php?id=" + id + "&qty=" + quantity;
+    // Ajax to delete items from cart
+    $('.delete-item').on('click', function () {
+        var element = $(this);
+        var menu_id = element.attr('id');
+        var del_id = 'did=' + menu_id;
+        if (confirm("Delete This?")) {
+            $.ajax({
+                type: "POST",
+                url: "remove_from_order.php",
+                data: del_id,
+                success: function () {
+                    location.reload();
+                    alert('Deleted Successfully!');
+                }
+            });
+        }
         return false;
     });
 
-    // Animsition code here
-    $('.animsition').animsition({
-        inClass: 'fade-in-right',
-        outClass: 'fade-out-right',
-        inDuration: 2000,
-        outDuration: 1500,
-        linkElement: '.animsition-link',
-        // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
-        loading: true,
-        loadingParentElement: 'body', //animsition wrapper element
-        loadingClass: 'animsition-loading',
-        loadingInner: '', // e.g '<img src="loading.svg" />'
-        timeout: false,
-        timeoutCountdown: 5000,
-        onLoadEvent: true,
-        browser: ['animation-duration', '-webkit-animation-duration'],
-        // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
-        // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
-        overlay: false,
-        overlayClass: 'animsition-overlay-slide',
-        overlayParentElement: 'body',
-        transition: function (url) {
-            window.location.href = url;
-        }
+    // Js Code for the jQuery UI Datepicker
+    $('#startDate').datepicker({
+        minDate: 2,
+        defaultDate: 2
+    });
+
+    // Enable popovers everywhere
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    });
+
+    // Call on the confirm delete modal
+    $('#confirm-delete').on('show.bs.modal', function (e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
+
+    // Enable popovers everywhere
+    $(function () {
+        $('[data-toggle="popover"]').popover()
     });
 
 

@@ -18,11 +18,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
-    <!-- Animsition jQuery Plugin -->
-    <link rel="stylesheet" href="css/animsition.min.css">
     <!-- Personal Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/custom.css">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -61,7 +58,7 @@
 
     <?php
     ///////// Navigation in here //////////
-    include 'navigation.php'; ?>
+    include_once 'navigation.php'; ?>
     <!-- Button trigger modal -->
 
 
