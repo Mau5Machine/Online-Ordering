@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    // Event listener for add to order button
+    // ABOUT: Event listener for add to order button
     $('.add-to-order-form').on('submit', function () {
 
         // Grab id and quantity variables
@@ -19,7 +19,7 @@ $(document).ready(function () {
         return false;
     });
 
-    // update quantity button listener
+    // ABOUT: update quantity button listener
     $('.update-quantity-form').on('submit', function () {
 
         // get basic information for updating the order items
@@ -38,7 +38,7 @@ $(document).ready(function () {
         return false;
     });
 
-    // Js to store contact form submission in database
+    // ABOUT: Js to store contact form submission in database
     $('#contact-form').on('submit', function () {
         var name = $('#nameField').val();
         var email = $('#emailField').val();
@@ -49,12 +49,15 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "inc/contact_form_store.php",
-            data: query
+            data: query,
+            success: function () {
+                window.location.href = "index.php?status=thanks";
+            }
         });
     });
 
 
-    // This Javascript holds the tab in place after refresh
+    // ABOUT: This Javascript holds the tab in place after refresh
     $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
         localStorage.setItem('activeTab', $(e.target).attr('href'));
     });
@@ -63,24 +66,21 @@ $(document).ready(function () {
         $('#nav-tab a[href="' + activeTab + '"]').tab('show');
     }
 
-    // Click event to trigger modal on main page "start Order"
+    // ABOUT: Click event to trigger modal on main page "start Order"
     $('#startOrderBtn').on('click', function () {
         // modal start order behavior
         $('#modalStartOrder').modal('show');
     });
 
 
-    // Form validation code here
+    // ABOUT: Form validation code here
     // start order form validation
     $('#pickup-details-form').validate({
         rules: {
-            // The key name is on the left is name attribute
-            // of input field. Rules are defined on right side
-            order_user: "required",
+            order_fname: "required",
+            order_lname: "required",
             order_email: {
                 required: true,
-                // Specify that email should be validated by
-                // the built-in "email" rule
                 email: true
             },
             order_phone: {
@@ -95,9 +95,10 @@ $(document).ready(function () {
                 required: true,
             }
         },
-        // Specify validation error messages
+        // ABOUT: Specify validation error messages
         message: {
-            order_user: "Please provide your full name",
+            order_fname: "Please provide your first name",
+            order_lname: "Please provide your last name",
             order_email: "Please enter a valid email address",
             order_phone: {
                 required: "Please enter a phone number",
@@ -117,17 +118,13 @@ $(document).ready(function () {
             }
         }
     });
-    // initialize form validation on the contact form
+    // ABOUT: initialize form validation on the contact form
     $('#contact-form').validate({
         // Specify validation rules
         rules: {
-            // The key name is on the left is name attribute
-            // of input field. Rules are defined on right side
             name: "required",
             email: {
                 required: true,
-                // Specify that email should be validated by
-                // the built-in "email" rule
                 email: true
             },
             phone: {
@@ -139,7 +136,7 @@ $(document).ready(function () {
                 minlength: 10
             }
         },
-        // Specify validation error messages
+        // ABOUT: Specify validation error messages
         message: {
             name: "Please provide a name",
             email: "Please enter a valid email address",
@@ -157,32 +154,68 @@ $(document).ready(function () {
             }
         }
     });
+    // ABOUT: Validation rules for the final details form
+    $('.checkout-form').validate({
+        // ABOUT: validation rules, everything required EXCECPT Special instruction
+        rules: {
+            first_name: "required",
+            last_name: "required",
+            email: {
+                required: true,
+                email: true
+            },
+            phone: {
+                required: true,
+                minlength: 10
+            },
+            order_date: {
+                required: true,
+                date: true,
+                minlength: 8
+            },
+            order_time: {
+                required: true
+            }
+        },
+        // ABOUT: validation messages here
+        message: {
+            first_name: "Please provide a First Name",
+            last_name: "Please provide a Last Name",
+            email: "Please provide a valid email address",
+            phone: {
+                required: "Please provide a valid phone number",
+                minlength: "Phone number must be at least 10 digits"
+            },
+            order_date: {
+                required: "Please provide a valid pickup date!",
+                minlength: "Date must be in valid format and at least 8 characters"
+            },
+            order_time: "Please select a time"
+        }
 
-    // Timeout function for the alerts
-    window.setTimeout(function () {
-        $(".alert").fadeTo(500, 0).slideUp(500, function () {
-            $(this).remove();
-        });
-    }, 1500);
+    });
 
-    // Ajax to delete items from cart
+    // ABOUT: Ajax to delete items from cart
     $('.delete-item').on('click', function () {
         var element = $(this);
         var menu_id = element.attr('id');
         var del_id = 'did=' + menu_id;
-        if (confirm("Delete This?")) {
+        $('#confirm-delete-item').modal('show');
+        $('.btn-ok').on('click', function () {
             $.ajax({
                 type: "POST",
                 url: "remove_from_order.php",
                 data: del_id,
                 success: function () {
                     location.reload();
-                    alert('Deleted Successfully!');
                 }
             });
-        }
-        return false;
+            $('#confirm-delete-item').modal('hide');
+        });
     });
+
+    // ABOUT: Js for the last date time modal
+    $('#modalDateTime').modal('show');
 
     // Js Code for the jQuery UI Datepicker
     $('#startDate').datepicker({
@@ -190,20 +223,14 @@ $(document).ready(function () {
         defaultDate: 2
     });
 
-    // Enable popovers everywhere
+    // ABOUT: Enable popovers everywhere
     $(function () {
         $('[data-toggle="popover"]').popover()
     });
 
-    // Call on the confirm delete modal
-    $('#confirm-delete').on('show.bs.modal', function (e) {
+    // ABOUT: This is the confirmation for the delete cart button
+    $('#confirm-delete-cart').on('show.bs.modal', function (e) {
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
     });
-
-    // Enable popovers everywhere
-    $(function () {
-        $('[data-toggle="popover"]').popover()
-    });
-
 
 });

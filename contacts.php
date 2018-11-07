@@ -5,11 +5,8 @@ session_start();
 // Grab Users Name for the Session
 $_SESSION['user'] = array();
 
-// Import PHPMailer into global namespace
-require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require 'vendor/phpmailer/phpmailer/src/Exception.php';
-require 'vendor/phpmailer/phpmailer/src/SMTP.php';
-use PHPMailer\PHPMailer\PHPMailer;
+// include the functions file
+include 'inc/functions.php';
 
 // Check and filter the input
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -27,53 +24,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_message = "Bad form input";
     }
 
-    // Validate email address
-    if (!isset($error_message) && !PHPMailer::validateAddress($email)) {
-        $error_message = 'Invalid email address';
-    }
-
     // Check if error message is set
     if (!isset($error_message)) {
-        // include once the login constants
-        // include 'inc/login.php';
-        //////// Start Submission Email /////////
-        $msg_body = "Contact Form Submitted on " . date('m-d-Y') . "\n";
-        $msg_body .= "From: " . ucwords($name) . "\n";
-        $msg_body .= "Email Address: " . $email . "\n";
-        $msg_body .= "Phone Number: " . $phone . "\n";
-        $msg_body .= "Message Body: " . $comments . "\n";
+       
+        // Build the subject and body of the SUBMIT EMAIL
+        // Define the subject
+        $subject = 'Contact Form Submission ' . date('d-m-Y');
+        // Build the Message Body
+        $msg_body = "Contact Form Submitted on " . date('m-d-Y') . "<br>";
+        $msg_body .= "From: <strong>" . ucwords($name) . "</strong><br>";
+        $msg_body .= "Email Address: <strong>" . $email . "</strong><br>";
+        $msg_body .= "Phone Number: <strong>" . $phone . "</strong><br>";
+        $msg_body .= "Message Body: <strong>" . $comments . "</strong><br>";
 
-        $mail = new PHPMailer;
-        $mail->SMTPDebug = 2;
-        // set who the email is sent from
-        $mail->setFrom('projectcgm@cmartins.pbcs.us', 'Catering Department');
-        // Set an alternative reply to address
-        $mail->addReplyTo('cmartins629@gmail.com', 'Christian Martins');
-        // set who the email is sent to
-        $mail->addAddress('christian@farmerstableboca.com', 'Christian Martins');
-        // attach subject and body to the email
-        $mail->Subject = 'Contact Form Submission ' . date('d-m-Y');
-        $mail->Body = $msg_body;
-        ///////// End Submission Email /////////
+        if (sendSubmitEmail($msg_body, $subject)) {
+            
+            // Build the subject and body of the THANK YOU EMAIL
+            $msgHTML = 'contents.html';
+            $tySubject = 'Contact Form Submitted on ' . date('m-d-Y');
 
-        if ($mail->send()) {
-         
-            ////// Start Thank You Email //////////
-            $confirmation_mail = new PHPMailer;
-            // set who the email is sent from
-            $confirmation_mail->setFrom('projectcgm@cmartins.pbcs.us', 'Catering Department');
-            // set who the email is sent to
-            $confirmation_mail->addAddress($email, 'Christian Martins');
-            // attach subject and body to the email
-            $confirmation_mail->Subject = 'Contact Form Submitted on ' . date('m-d-Y');
-            // attach the html document for the body of email
-            $confirmation_mail->msgHTML(file_get_contents('contents.html'), __DIR__);
-            if ($confirmation_mail->send()) {
-                header('location: index.php?status=thanks');
+            if (sendThankYouEmail($email, $name, $tySubject, $msgHTML)) {
+                header('location:index.php?status=thanks');
                 exit;
             }
-            $error_message = "Mailer Error: " . $mail->ErrorInfo;
-            ////////// End Thank You Email ////////////
         }
     }
 }

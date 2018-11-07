@@ -4,7 +4,7 @@ session_start();
 $_SESSION['order'] = isset($_SESSION['order']) ? $_SESSION['order'] : array();
 
 $pageTitle = 'Home';
-include 'inc/start_order_modal.php';
+
 include_once 'inc/header.php';
 ?>
 
@@ -15,63 +15,53 @@ include_once 'inc/header.php';
             <img src="images/catering-sign.png" alt="catering" class="img-fluid">
 
             <p class="lead" id="banner-btn">
-                <a class="btn btn-primary btn-lg" href="menu.php" role="button">Catering Menu</a>
-                <!-- TODO: Start working on the form for the guest information to start the order process -->
+                <a class="btn btn-primary btn-lg" href="menu.php" role="button" id="cateringMenuBtn">Catering Menu</a>
+           
                 <a class="btn btn-primary btn-lg" href="#" role="button" id="startOrderBtn">Start Order</a>
             </p>
         </div>
     </header>
     <!-- End Banner -->
-
+    <div class="sub-header row text-center">
+    <img src="images/text/front-page-text.png" alt="header-text-image" class="img-fluid">
+    </div>
     <!-- Start site content -->
-    <article class="container how-it-works">
-        <div class="row">
-            <img src="images/text/howitworks.png" class="img-fluid my-4" id="how-it-works-header">
-        </div>
-
-        <div class="row  d-flex justify-content-around">
-
-            <!-- How it works cards -->
-            <aside class="card bg-light mb-3" style="max-width: 25rem;">
-                <div class="card-header text-center farm-red-bg">
-                    <h4>Choose Your Items</h4>
+    <article class="container front-page-container">
+        <div class="front-inner-container">
+            <div class="row inner-header">
+                <div class="col-12 text-center">
+                    <!-- <img src="images/text/front-page-text.png" alt="header-text-image"> -->
                 </div>
-                <div class="card-body">
-                    <h4 class="card-title">Browse The Menu</h4>
-                    <p class="car-text">
-                        &bull; Add items to your order</br>
-                        &bull; Review the order for any mistakes</br>
-                        &bull; Provide contact information at prompt</br>
-                        &bull; Submit!</br>
-                        &bull; Check your email for verification</br>
-                    </p>
-                    <p><span class="badge badge-danger">Important</span><br>
-                        We will need at least a 48 hour notice to prepare your custom catering order</p>
-                </div>
-            </aside>
-
-            <!-- Arrow to next card goes here -->
-            <div class="arrow">
-                <img src="images/chef-icon.png" alt="chef icon" id="how-it-works-transfer">
             </div>
+            <!-- Start the content explaining how it works -->
+            <div class="front-page-main-content">
+                <div class="row first-row-main-content d-flex justify-content-center flex-wrap">
+                    <!-- One card here -->
+                    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                        <div class="card-header text-center">A Simplified Ordering Solution</div>
+                        <div class="card-body">
+                            <div class="card-title text-center"><img src="images/checklist-120x120.png"></div>
+                            <div class="card-text">
+                                <ul>
+                                <li>Click on the Start Order Button</li>
+                                <li>Select Your Items From our Fresh and Delicious Menu Options</li>
+                                <li>Checkout!</li>
+                                </ul>
+                            <!-- TODO: FINISH THIS PAGE REMODEL! -->
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- Second card here -->
-            <aside class="card bg-light mb-3" style="max-width: 25rem;">
-                <div class="card-header text-center farm-red-bg">
-                    <h4>Prep Time!</h4>
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Time to cook</h4>
-                    <p class="card-text">
-                        &bull; Catering department receives your order<br>
-                        &bull; We verify the order with you over the phone<br>
-                        &bull; Fresh & healthy cooking takes place<br>
-                        &bull; You get a call to come pick up your order!<br>
-                    </p>
-                    <p><span class="badge badge-warning">Optional</span><br>
-                        You invite us to your party!</p>
-                </div>
-            </aside>
+                    <!-- One card here -->
+                    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Secondary card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div
+        
         </div>
     </article>
     <!-- End how it works container -->
@@ -95,3 +85,9 @@ include_once 'inc/header.php';
 <?php
 include_once 'inc/footer.php';
 ?>
+<!-- Start Order Modal Here -->
+<?php
+include_once 'inc/functions.php';
+renderStartOrderModal();
+?>
+

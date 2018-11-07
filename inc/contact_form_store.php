@@ -11,7 +11,10 @@ $comments = isset($_POST['comments']) ? $_POST['comments'] : "";
 // Start the connection to the database
 include 'connect.php';
 
-$sql = "INSERT INTO contact_forms (`contact_id`, `contact_name`, `contact_email`, `contact_phone`, `contact_message`, `contact_created`) VALUES (NULL, :name, :email, :phone, :message, CURRENT_TIMESTAMP)";
+$sql = "INSERT INTO contact_forms 
+(`contact_id`, `contact_name`, `contact_email`, `contact_phone`, `contact_message`, `contact_created`) 
+VALUES 
+(NULL, :name, :email, :phone, :message, CURRENT_TIMESTAMP)";
 
     $stmt = $pdo->prepare($sql);
 

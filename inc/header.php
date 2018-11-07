@@ -9,6 +9,8 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/icon">
     <!-- jQuery UI styles -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css">
+    <!-- For the datepicker and validator -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- Hover CSS -->
     <link rel="stylesheet" href="css/hover.css">
     <!-- Font Awesome -->

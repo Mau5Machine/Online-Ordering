@@ -34,12 +34,30 @@ h3 {
     font-family: 'Hind', sans-serif;
 }
 
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
     font-family: 'Oldenburg', cursive;
 }
 
 li {
     font-size: 16px;
+}
+
+.gradient-bg {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00698f+0,8dc63f+100 */
+    background: #00698f;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #00698f 0%, #8dc63f 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #00698f 0%, #8dc63f 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #00698f 0%, #8dc63f 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00698f', endColorstr='#8dc63f', GradientType=0);
+    /* IE6-9 */
 }
 
 .display-none {
@@ -83,13 +101,6 @@ li {
     background-color: rgba(255, 255, 255, 0.897);
 }
 
-.action-alert h5 {
-    color: black;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
 /* WRAPPER  */
 /* #content {
     min-height: 100%;
@@ -97,6 +108,10 @@ li {
 } */
 
 /* NAV */
+.navbar {
+    border-bottom: 1px solid black;
+}
+
 .navbar-brand img {
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
@@ -117,7 +132,11 @@ li {
     text-shadow: 2px 2px 2px black;
 }
 
-.order-icon a:hover {
+.order-icon a:hover,
+.order-icon a:active,
+.order-icon a:focus,
+.order-icon a:visited {
+    color: white;
     text-decoration: none;
 }
 
@@ -140,7 +159,7 @@ li {
 
 /* CONTENT */
 /* HOW IT WORKS */
-.how-it-works {
+.front-page-container {
     background: url('../images/wallpaper/ft-wp.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -152,23 +171,33 @@ li {
     box-shadow: 2px 2px 5px black;
 }
 
-.how-it-works img {
+.jumbotron {
+    margin-top: -50px;
+    height: 340px;
+    border-bottom: 1px solid black;
+}
+
+#startOrderBtn,
+#cateringMenuBtn {
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px black;
+}
+
+.sub-header img {
     margin: 0 auto;
-    box-shadow: 2px 2px 5px black;
+    -ms-transform: rotate(5deg);
+    /* IE 9 */
+    -webkit-transform: rotate(5deg);
+    /* Safari 3-8 */
+    transform: rotate(5deg);
+    z-index: 1;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
 }
 
-.how-it-works aside {
-    box-shadow: 2px 2px 5px black;
-}
-
-.how-it-works .card-header {
-    color: #fff;
-}
-
-.arrow img {
-    box-shadow: 0 0 0;
-    padding: 20px 5px;
-    margin-top: 60px;
+.front-page-main-content {
+    background: white;
 }
 
 /* LOCATION */
@@ -238,9 +267,9 @@ li {
 /* ////////////////////////////////////////
 ///////////    MENU PAGE    ////////////// */
 .menu-card-wrapper {
-    background: #ffffff;
+    /* background: white; */
     padding: 20px 0;
-    border: 1px solid black;
+
 }
 
 .menu-nav a {
@@ -285,10 +314,11 @@ li {
 }
 
 #menu-item-card {
-    width: 25rem;
+    width: 20rem;
     margin-top: 15px;
     background: rgb(255, 255, 255);
     border: 1px solid black;
+    box-shadow: 2px 2px 3px black;
 }
 
 #menu-item-card li {
@@ -341,6 +371,7 @@ li {
 
 #order-banner {
     background: white;
+    border-bottom: 1px solid black;
 }
 
 #order-banner img {
@@ -366,24 +397,64 @@ li {
     margin: 0 10px 0 0;
 }
 
+.totaled-order button {
+    box-shadow: 2px 2px 5px black;
+    border: 1px solid black;
+}
+
+.totaled-order a {
+    box-shadow: 2px 2px 5px black;
+    border: 1px solid black;
+}
+
+.cancel-delete-btn {
+    box-shadow: 2px 2px 5px black;
+    border: 1px solid black;
+}
+
+.delete-item-btn {
+    box-shadow: 2px 2px 5px black;
+    border: 1px solid black;
+    color: white;
+}
+
 /* ////////////////////////////////////////
 ///////////    CHECKOUT PAGE    ////////////// */
+/* PICKUP DATE AND TIME DISPLAY */
+.pickup-info-container {
+    text-align: left;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px black;
+    background: #908d34;
+}
+
+.select-date-time-container {
+    padding: 10px;
+}
+
+.select-date-time-container button {
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px black;
+}
+
 /* SEND ORDER HEADER  */
 #send-order-header {
     background: white;
     margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
 }
 
 /* ORDER SUMMARY STYLING */
-.order-summary-header {
-    background: #8DC63F;
-    border: 1px solid black;
+#table-header {
     padding: 10px 0;
-    margin-bottom: -10px;
+    text-align: center;
 }
 
 #order-half table {
-    border: 1px solid black;
+    border: 3px solid black;
     background: white;
 }
 
@@ -392,11 +463,12 @@ li {
 }
 
 #order-half th {
-    background: #B3292E;
+    background: rgb(0, 0, 0);
     color: white;
 }
 
 .totals-numbers {
+    font-weight: bold;
     margin-left: 20px;
 }
 
@@ -405,6 +477,47 @@ li {
     background: white;
     padding: 40px;
     border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.checkout-form legend {
+    font-size: 2em;
+    text-align: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 15px;
+}
+
+#submit-order-btn {
+    box-shadow: 2px 2px 5px black;
+    border: 1px solid black;
+}
+
+i {
+    text-shadow: 2px 2px 3px grey;
+}
+
+.final-date-time-fields {
+    text-align: center;
+    padding-left: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+    margin-bottom: 10px;
+    background: url('../images/wallpaper/wood.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.final-date-time-fields input {
+    border: 1px solid black;
+}
+
+.final-date-time-fields select {
+    border: 1px solid black;
+}
+
+.final-date-time-fields i {
+    color: black;
 }
 
 /* ////////////////////////////////////////
@@ -415,6 +528,7 @@ li {
 }
 
 #popover-notice {
+    margin: 0 auto;
     border-radius: 8px;
     border: 1px solid black;
     box-shadow: 2px 2px 3px black;
@@ -469,6 +583,7 @@ li {
     #how-it-works-transfer {
         margin-top: 0;
         display: none;
+        margin: 0 auto;
     }
 
     .how-it-works aside {
@@ -493,6 +608,7 @@ li {
     .update-quantity-form {
         margin: 0 auto;
     }
+
     .item-name {
         text-align: center;
     }
@@ -503,10 +619,13 @@ li {
 @media (max-width: 767px) {
     #how-it-works-transfer {
         display: none;
+        margin: 0 auto;
     }
 
     .how-it-works {
         width: 100%;
+        display: flex;
+
     }
 
     .how-it-works aside {
@@ -518,6 +637,7 @@ li {
 @media (min-width: 768px) and (max-width: 979px) {
     #how-it-works-transfer {
         display: none;
+        margin: 0 auto;
     }
 }
 

@@ -50,7 +50,8 @@ if (count($_SESSION['order']) > 0) {
 
         echo "<div class='row order-row mx-4'>";
         echo "<div class='col-md-8 item-name m-b-10px'>";
-        echo "<h5>{$menu_name}</h5>";
+        echo "<h5><i class='fas fa-utensils pr-2'></i>";
+        echo "<strong>{$menu_name}</strong></h5>";
         echo "</div>";
      
         // Update Quantity Here
@@ -77,13 +78,13 @@ if (count($_SESSION['order']) > 0) {
         $total += $sub_total;
     }
 
-    echo "<div class='col-md-12 text-center'>";
+    echo "<div class='col-md-12 text-center totaled-order'>";
     echo "<h4 class='m-b-10px mt-4'>Total ({$item_count}items)</h4>";
     echo "<h4>$ " . number_format($total, 2, '.', ',') . "</h4>";
-    echo "<a href='place_order.php' class='btn btn-success m-b-10px'>";
+    echo "<a href='checkout.php' class='btn btn-success m-b-10px'>";
     echo "<span class='glyphicon glyphicon-shopping-cart'></span> Checkout";
     echo "</a>";
-    echo "<button data-href='clear_cart.php' data-toggle='modal' data-target='#confirm-delete' class='btn farm-red-bg text-white ml-3' id='clear-cart'>Clear Cart</button>";
+    echo "<button data-href='clear_cart.php' data-toggle='modal' data-target='#confirm-delete-cart' class='btn farm-red-bg text-white ml-3' id='clear-cart'>Clear Cart</button>";
     echo "</div>";
 }
 // no products were added to order
@@ -92,30 +93,12 @@ else {
     // redirect to menu page
     header('location:menu.php');
 }
-?>
 
-<!-- Confirmation to delete cart/menu-item -->
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                Are you sure?
-            </div>
-            <div class="modal-body">
-                Do you want to proceed in removing all items from the order?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok">Delete</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <?php
 include_once 'inc/footer.php';
+
+include 'inc/functions.php';
+renderClearCartModal();
+renderRemoveItemModal();
 ?>
-<script>
-            
-</script>
+
 
