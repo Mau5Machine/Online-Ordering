@@ -38,7 +38,7 @@ if (count($_SESSION['order']) > 0) {
 <div class="row" id="order-banner">
     <img src="images/text/your-order-text.png" alt="your order text" class="img-fluid">
 </div>
-<div class="container order-wrapper">
+<section class="container" id="order-wrapper">
 
     <?php
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -86,14 +86,12 @@ if (count($_SESSION['order']) > 0) {
     echo "</a>";
     echo "<button data-href='clear_cart.php' data-toggle='modal' data-target='#confirm-delete-cart' class='btn farm-red-bg text-white ml-3' id='clear-cart'>Clear Cart</button>";
     echo "</div>";
-}
-// no products were added to order
-// TODO: FIX THIS ISSUE WHERE USER GETS RELOCATED TO THE MENU PAGE!
-else {
+} else {
     // redirect to menu page
     header('location:menu.php');
-}
-
+} ?>
+</section>
+<?php
 include_once 'inc/footer.php';
 
 include 'inc/functions.php';

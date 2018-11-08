@@ -43,7 +43,7 @@ include_once 'inc/header.php';
         <div class="row d-flex justify-content-center">
             <!-- One row for the form and order same line -->
 
-            <div class="col-md-5 col-sm-12" id="order-half">
+            <div class="col-md-6 col-sm-12" id="order-half">
                 <table class='table table-striped'>
                     <thead>
                         <tr>

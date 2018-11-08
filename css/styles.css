@@ -30,36 +30,41 @@ header/footer width: full
 /* GLOBAL */
 h1,
 h2,
-h3 {
-    font-family: 'Hind', sans-serif;
-}
-
-p {
-    font-family: 'Roboto', sans-serif;
+h3,
+p,
+body {
+    font-family: 'Oldenburg', cursive;
 }
 
 body {
-    font-family: 'Oldenburg', cursive;
+    position: relative;
+    margin: 0;
+    /* padding-bottom: 6rem; */
+    min-height: 100%;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
 }
 
 li {
     font-size: 16px;
 }
 
-.gradient-bg {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00698f+0,8dc63f+100 */
-    background: #00698f;
-    /* Old browsers */
-    background: -moz-linear-gradient(top, #00698f 0%, #8dc63f 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #00698f 0%, #8dc63f 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #00698f 0%, #8dc63f 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00698f', endColorstr='#8dc63f', GradientType=0);
-    /* IE6-9 */
+a:hover,
+a:active,
+a:focus,
+a:visited {
+    text-decoration: none;
 }
 
+/* WRAPPER  */
+#content {
+    height: 100%;
+}
+
+/* CUSTOM CLASSES */
 .display-none {
     display: none;
 }
@@ -72,7 +77,6 @@ li {
     background-position: center;
 }
 
-/* CUSTOM CLASSES */
 .farm-red {
     color: #B3292E;
 }
@@ -83,6 +87,12 @@ li {
 
 .farm-blue-bg {
     background-color: #00698F;
+}
+
+.black-link {
+    color: black !important;
+    text-shadow: none;
+    font-weight: bold;
 }
 
 .farm-red-bg {
@@ -97,39 +107,34 @@ li {
     background-color: #8DC63F;
 }
 
-.transp-grey {
-    background-color: rgba(255, 255, 255, 0.897);
+.white-bg {
+    background: rgb(255, 255, 255);
 }
 
-/* WRAPPER  */
-/* #content {
-    min-height: 100%;
-    position: relative;
-} */
+/* Gradient style for the front page banner */
+.gradient-vertical {
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 4%, rgba(149, 192, 208, 1) 44%, rgba(82, 153, 179, 0.7) 69%, rgba(0, 105, 143, 0) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 4%, rgba(149, 192, 208, 1) 44%, rgba(82, 153, 179, 0.7) 69%, rgba(0, 105, 143, 0) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 4%, rgba(149, 192, 208, 1) 44%, rgba(82, 153, 179, 0.7) 69%, rgba(0, 105, 143, 0) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#0000698f', GradientType=0);
+    /* IE6-9 */
+}
 
 /* NAV */
-.navbar {
-    border-bottom: 1px solid black;
-}
-
 .navbar-brand img {
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     box-shadow: 2px 2px 5px black;
 }
 
-#nav-tab {
-    background: white;
-    border-bottom: 1px solid black;
-    padding: 5px 0;
-}
-
-#nav-tab a {
-    color: black;
-}
-
 .nav-item a {
-    text-shadow: 2px 2px 2px black;
+    text-shadow: 1px 1px 5px gray;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: black;
 }
 
 .order-icon a:hover,
@@ -140,19 +145,28 @@ li {
     text-decoration: none;
 }
 
-.order-icon {
-    background: #8DC63F;
-    padding: 0 10px;
-    border: 1px solid black;
-    border-radius: 6px;
-}
-
 .order-icon i {
+    font-size: 2.8em;
     color: black;
-    font-size: 2.5em;
+    margin-right: 10px;
 }
 
-/* MODAL */
+#comparison-count {
+    position: relative;
+    text-shadow: 1px 1px 2px black;
+    top: 4px;
+    left: 20px;
+    z-index: 1;
+    font-size: 1.2em;
+    border-radius: 50%;
+}
+
+/* EMPTY CART MODAL BUTTONS */
+#dismiss-btn,
+#menu-btn {
+    box-shadow: 2px 2px 5px black;
+    border: 1px solid black;
+}
 
 /* ////////////////////////////////////////
 ///////////    HOME PAGE    ////////////// */
@@ -160,21 +174,7 @@ li {
 /* CONTENT */
 /* HOW IT WORKS */
 .front-page-container {
-    background: url('../images/wallpaper/ft-wp.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 20px;
-    padding-bottom: 60px;
-    border: 1px solid black;
-    margin-bottom: 80px;
-    box-shadow: 2px 2px 5px black;
-}
-
-.jumbotron {
-    margin-top: -50px;
-    height: 340px;
-    border-bottom: 1px solid black;
+    padding-bottom: 50px;
 }
 
 #startOrderBtn,
@@ -183,21 +183,79 @@ li {
     box-shadow: 2px 2px 5px black;
 }
 
-.sub-header img {
-    margin: 0 auto;
-    -ms-transform: rotate(5deg);
-    /* IE 9 */
-    -webkit-transform: rotate(5deg);
-    /* Safari 3-8 */
-    transform: rotate(5deg);
-    z-index: 1;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
+.front-page-main-content {
+    margin-top: 50px;
 }
 
-.front-page-main-content {
-    background: white;
+/* THANK YOU MODAL */
+.thanks-btn button {
+    box-shadow: 2px 2px 5px black;
+    border: 1px solid black;
+}
+
+/* CARDS FRONT PAGE */
+.front-cards {
+    border: 1px solid white;
+    box-shadow: 3px 3px 5px black;
+}
+
+.front-card-header {
+    font-size: 1.5em;
+    text-shadow: 2px 2px 5px black;
+}
+
+.front-cards ul {
+    list-style-type: none;
+    margin-left: -15px;
+}
+
+.front-cards li {
+    border-bottom: 1px solid black;
+    padding: 15px 0;
+    font-size: 1.2em;
+    text-shadow: 2px 2px 5px black;
+}
+
+.front-cards li a {
+    color: white;
+}
+
+#front-card-text {
+    font-size: 1.2em;
+    text-shadow: 2px 2px 5px black;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+#front-card-text2 {
+    font-size: 1.4em;
+    color: black;
+    background: url('../images/wallpaper/wood.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    line-height: 2em;
+}
+
+#front-card-text2 a,
+#front-card-text2 a:hover,
+#front-card-text2 a:visited,
+#front-card-text2 a:focus,
+#front-card-text2 a:active {
+    color: #00698F;
+    text-decoration: none;
+    font-size: .85em;
+}
+
+/* CAROUSEL */
+.carousel {
+    margin: 0 auto;
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px black;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 /* LOCATION */
@@ -207,41 +265,35 @@ li {
 }
 
 #location {
-    background: url('../images/wallpaper/almond-dates-wp.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px black;
-    margin-bottom: 120px;
+    background: white;
     padding: 30px;
+    padding-bottom: 100px;
 }
 
-#location-header {
-    margin: 0 auto;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 2px 2px 5px black;
+.location-header {
+    color: black;
+    text-shadow: 2px 2px 5px #808080;
 }
 
+.address-info p {
+    font-size: 1.3em;
+    line-height: 2em;
+}
 
 /* ////////////////////////////////////////
 ///////////    CONTACT PAGE    ////////////// */
-#contact-wrapper {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 800px;
-}
-
 #contact-panel {
     background: rgba(255, 255, 255, 0.959);
     border: 1px solid black;
-    padding: 20px;
+    padding: 20px 0;
     margin-top: 30px;
     box-shadow: 3px 3px 10px black;
     border-radius: 10px;
     margin-bottom: 150px;
+}
+
+#contact-form {
+    padding: 30px 0;
 }
 
 #contact-sign {
@@ -252,12 +304,21 @@ li {
     display: none;
 }
 
-.error {
-    color: red;
+.default-msg-contact {
+    margin: 0 auto;
+    background: #8DC63F;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    line-height: 1.5em;
 }
 
-.default-msg-contact {
-    background: #8DC63F;
+.submit-contact-btn input {
+    box-shadow: 2px 2px 5px black;
+}
+
+.error-msg-contact {
+    margin: 0 auto;
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
@@ -266,10 +327,21 @@ li {
 
 /* ////////////////////////////////////////
 ///////////    MENU PAGE    ////////////// */
-.menu-card-wrapper {
-    /* background: white; */
-    padding: 20px 0;
+/* WRAPPER */
+#menu-page {
+    height: 100%;
+    margin-bottom: 100px;
+}
 
+/* MENU NAV */
+#nav-tab {
+    background: white;
+    border-bottom: 1px solid black;
+    padding: 5px 0;
+}
+
+#nav-tab a {
+    color: black;
 }
 
 .menu-nav a {
@@ -285,6 +357,7 @@ li {
     text-decoration: none;
 }
 
+/* FILTER */
 .form-container {
     margin-bottom: 10px;
 }
@@ -309,8 +382,19 @@ li {
     padding: 10px;
 }
 
+/* MENU CARDS + CONTENT */
+.menu-card-wrapper {
+    padding: 20px 0;
+}
+
 .section-header img {
     margin: 0 auto;
+}
+
+#menu-items-list h1 {
+    text-align: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
 }
 
 #menu-item-card {
@@ -329,27 +413,6 @@ li {
     width: 30rem;
 }
 
-.card-title a {
-    color: rgb(248, 248, 248);
-    background: #00698F;
-    padding: 6px;
-    border-radius: 10px;
-}
-
-.card-title a:hover {
-    text-decoration: none;
-}
-
-#menu-items-list h1 {
-    text-align: center;
-    border-bottom: 1px solid black;
-    margin-bottom: 20px;
-}
-
-.menu-nav nav {
-    background: rgba(255, 255, 255, 0.582);
-}
-
 #menu-item-card .card-subtitle {
     color: black;
 }
@@ -360,13 +423,14 @@ li {
 
 /* ////////////////////////////////////////
 ///////////    CART PAGE    ////////////// */
-.order-wrapper {
+#order-wrapper {
     border-radius: 10px;
     box-shadow: 3px 3px 10px black;
     border: 1px solid black;
-    margin-top: 80px;
+    margin-top: 50px;
     padding: 20px;
     background: rgb(255, 255, 255);
+    margin-bottom: 130px;
 }
 
 #order-banner {
@@ -420,6 +484,11 @@ li {
 
 /* ////////////////////////////////////////
 ///////////    CHECKOUT PAGE    ////////////// */
+/* WRAPPER */
+#submit-order {
+    margin-bottom: 120px;
+}
+
 /* PICKUP DATE AND TIME DISPLAY */
 .pickup-info-container {
     text-align: left;
@@ -498,7 +567,8 @@ i {
 
 .final-date-time-fields {
     text-align: center;
-    padding-left: 20px;
+    padding-left: 10px;
+    padding-bottom: 10px;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 2px 2px 5px black;
@@ -528,6 +598,7 @@ i {
 }
 
 #popover-notice {
+    font-size: .75em;
     margin: 0 auto;
     border-radius: 8px;
     border: 1px solid black;
@@ -570,27 +641,6 @@ i {
         font-size: .75em;
     }
 
-    .how-it-works {
-        width: 100%;
-        margin-top: 50px;
-        border-radius: 0;
-    }
-
-    #how-it-works-header {
-        width: 85%;
-    }
-
-    #how-it-works-transfer {
-        margin-top: 0;
-        display: none;
-        margin: 0 auto;
-    }
-
-    .how-it-works aside {
-        margin: 0 auto;
-        margin-top: 20px;
-    }
-
     #location {
         border-radius: 0;
     }
@@ -613,37 +663,48 @@ i {
         text-align: center;
     }
 
+    /* FOOTER */
+    footer {
+        text-align: left;
+        font-size: .90em;
+    }
+
+    /* map */
+    #location iframe {
+        margin-bottom: 20px;
+    }
+
+    /* Address info */
+    .address-info p {
+        text-align: center;
+        line-height: 1.2em;
+        font-size: 1em;
+    }
+
 }
 
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
-    #how-it-works-transfer {
-        display: none;
-        margin: 0 auto;
-    }
-
-    .how-it-works {
-        width: 100%;
-        display: flex;
-
-    }
-
-    .how-it-works aside {
-        margin: 0 auto;
-    }
-}
+@media (max-width: 767px) {}
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
-    #how-it-works-transfer {
-        display: none;
-        margin: 0 auto;
-    }
-}
+@media (min-width: 768px) and (max-width: 979px) {}
 
 /* FOOTER */
 footer {
-    width: 100%;
-    height: 30px;
-    display: none;
+    position: absolute;
+    color: white;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: rgb(27, 27, 27);
+    text-align: center;
+}
+
+.copyright {
+    padding-top: 10px;
+}
+
+.social-icons {
+    padding-top: 10px;
 }

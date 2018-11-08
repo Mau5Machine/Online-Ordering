@@ -202,6 +202,31 @@ function renderRemoveItemModal()
 </div>
 <?php
 }
+
+// function to render thank you modal
+function renderThankYouModal()
+{
+    ?>
+    <div class="modal" tabindex="-1" role="dialog" id="thanks-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thank You!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Someone will be in touch with you as soon as possible!</p>
+                </div>
+                <div class="modal-footer thanks-btn">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
+}
 // submit email to catering department
 function sendSubmitEmail($msg_body, $subject, $html = true)
 {
@@ -315,28 +340,29 @@ function getCurrentUser($email)
     return $row = $stmt->fetch();
 }
 
-// add the order items to the db
-function addOrderItems($orders_id, $order_session)
+// Add the items to the database with the order id
+function AddOrderItems($orders_id, $menu_id, $menu_name, $qty)
 {
     include 'inc/connect.php';
 
     // prepare the query for the ordered_items
     $query = "INSERT INTO `ordered_items` 
-    (`orders_id`, `ordered_items_id`, `ordered_items_quantity`) 
+    (`orders_id`, `ordered_items_id`, `ordered_items_name`, `ordered_items_quantity`) 
     VALUES
-    ( :orders_id, :ordered_items_id, :ordered_items_quantity ) ";
+    ( :orders_id, :ordered_items_id, :ordered_items_name, :ordered_items_quantity ) ";
 
     // prepare
     $stmt = $pdo->prepare($query);
 
     // bind values
-    foreach ($order_session as $id => $quantity) {
-        $stmt->bindParam(':orders_id', $orders_id, PDO::PARAM_INT);
-        $stmt->bindParam(':ordered_items_id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':ordered_items_quantity', $order_session[$id]['quantity'], PDO::PARAM_INT);
-        // execute
-        $stmt->execute();
-    }
+    $stmt->bindParam(':orders_id', $orders_id, PDO::PARAM_INT);
+    $stmt->bindParam(':ordered_items_id', $menu_id, PDO::PARAM_INT);
+    $stmt->bindParam(':ordered_items_name', $menu_name, PDO::PARAM_STR);
+    $stmt->bindParam(':ordered_items_quantity', $qty, PDO::PARAM_INT);
+
+    // execute
+    $stmt->execute();
+
     return true;
 }
 

@@ -69,7 +69,7 @@ if (isset($_SESSION['order']) && count($_SESSION['order']) > 0) {
         $orders_id = $orders_id['orders_id'];
 
         // Add the ordered items to the database //
-        addOrderItems($orders_id, $_SESSION['order']);
+        // addOrderItems($orders_id, $_SESSION['order']);
 
         // set the subject
         $subject = "ALERT! New Catering Order Submitted " . date('m/d/Y');
@@ -87,6 +87,13 @@ if (isset($_SESSION['order']) && count($_SESSION['order']) > 0) {
             extract($row);
             // Set the quantity in the order
             $quantity = $_SESSION['order'][$menu_id]['quantity'];
+
+            // Run the function to add the ordered items to the database
+            try {
+                AddOrderItems($orders_id, $menu_id, $menu_name, $quantity);
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
 
             $msg_body .= "<h2><strong>&bull; {$menu_name} for {$quantity} people</strong></h2><br>";
         }

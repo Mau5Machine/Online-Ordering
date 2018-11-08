@@ -34,27 +34,8 @@
     $status = isset($_GET['status']) ? $_GET['status'] : "";
 
     if ($status == 'thanks') {
-        ?>
-    <div class="modal" tabindex="-1" role="dialog" id="thanks-modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Thank You!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Thank You For Your Message! Someone will be in touch with you soon.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <?php
+        include 'functions.php';
+        renderThankYouModal();
     } ?>
 
 

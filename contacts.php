@@ -56,18 +56,19 @@ include_once 'inc/header.php';
 ?>
 
 <!-- Start BODY CONTENT FOR CONTACT PAGE HERE -->
-<div class="contact-wrapper">
+<section class="contact-wrapper container-fluid">
 
-    <div id="contact-panel" class="container">
-        <div class="row">
-            <img src="images/contact-sign.png" class="img-fluid" alt="contact us" id="contact-sign">
-        </div>
+    <div id="contact-panel" class="col-md-10 col-sm-12 mx-auto">
+        <div class="contact-header col-12">
+            <div class="row">
+                <img src="images/contact-sign.png" class="img-fluid" alt="contact us" id="contact-sign">
+            </div>
 
-        <!-- Form message here -->
-        <div class="form-msg col-sm-12 col-md-6">
-            <?php
+            <!-- Form message here -->
+            <div class="form-msg col-md-8 col-sm-12 mx-auto text-center">
+                <?php
             if (isset($error_message)) {
-                echo "<h5 class='error-msg-contact'>";
+                echo "<h5 class='error-msg-contact bg-danger'>";
                 echo "There was an Error: {$error_message}";
                 echo "</h5>";
             } else {
@@ -76,59 +77,62 @@ include_once 'inc/header.php';
                 echo "</h5>";
             }
             ?>
-        </div>
-        <!-- Start Contact Form Here  -->
-        <section class="contact-form">
-            <form action="" method="post" id='contact-form'>
-                <legend>Contact Us</legend>
-                <!-- Full Name Field Here -->
-                <div class="form-group col-sm-12 col-md-6">
-                    <label for="nameField">Full Name</label>
-                    <input type="text" class="form-control" id="nameField" placeholder="Full Name" name="name" value="<?php if (isset($name) && $name != "") {
+            </div>
+
+            <!-- Start Contact Form Here  -->
+            <article class="contact-form col-md-6 col-sm-12 mx-auto">
+                <form action="" method="post" id='contact-form'>
+                    <legend>Contact Us</legend>
+                    <!-- Full Name Field Here -->
+                    <div class="form-group col-12 row">
+                        <label for="nameField">Full Name</label>
+                        <input type="text" class="form-control" id="nameField" placeholder="Full Name" name="name"
+                            value="<?php if (isset($name) && $name != "") {
                 echo trim($name);
             } ?>">
-                </div>
+                    </div>
 
-                <!-- Email Field Here -->
-                <div class="form-group col-sm-12 col-md-6">
-                    <label for="emailField">Email Address</label>
-                    <input type="email" class="form-control" id="emailField" placeholder="Email Address" name="email" 
-                        value="<?php if (isset($email)) {
+                    <!-- Email Field Here -->
+                    <div class="form-group col-12 row">
+                        <label for="emailField">Email Address</label>
+                        <input type="email" class="form-control" id="emailField" placeholder="Email Address" name="email"
+                            value="<?php if (isset($email)) {
                 echo trim($email);
             } ?>">
-                </div>
+                    </div>
 
-                <!-- Phone Number Field Here -->
-                <div class="form-group col-sm-12 col-md-6">
-                    <label for="phoneField">Phone Number</label>
-                    <input type="tel" class="form-control" id="phoneField" placeholder="ie: 561-555-5545" name="phone"
-                        value="<?php if (isset($phone)) {
+                    <!-- Phone Number Field Here -->
+                    <div class="form-group col-12 row">
+                        <label for="phoneField">Phone Number</label>
+                        <input type="tel" class="form-control" id="phoneField" placeholder="ie: 561-555-5545" name="phone"
+                            value="<?php if (isset($phone)) {
                 echo trim($phone);
             } ?>">
-                </div>
+                    </div>
 
-                <!-- Comments Field Here -->
-                <div class="form-group col-sm-12 col-md-6">
-                    <label for="comments">Comments & Suggestions</label>
-                    <textarea name="comments" placeholder='Message Here' id="comments" class="form-control" rows="5"><?php if (isset($comments)) {
+                    <!-- Comments Field Here -->
+                    <div class="form-group col-12 row">
+                        <label for="comments">Comments & Suggestions</label>
+                        <textarea name="comments" placeholder='Message Here' id="comments" class="form-control" rows="5"><?php if (isset($comments)) {
                 echo trim($comments);
             } ?></textarea>
-                </div>
+                    </div>
 
-                <!-- Hidden Field Here -->
-                <div class="hidden-field">
-                    <input type="text" id="address" name="address">
-                    <p>Please leave this field blank!</p>
-                </div>
+                    <!-- Hidden Field Here -->
+                    <div class="hidden-field">
+                        <input type="text" id="address" name="address">
+                        <p>Please leave this field blank!</p>
+                    </div>
 
-                <!-- Submit Here -->
-                <div class="form-group col-4">
-                    <input type="submit" value="Submit" class="btn btn-primary">
-                </div>
-            </form>
-        </section>
-    </div> <!-- END CONTENT BODY HERE -->
- 
-    <?php
+                    <!-- Submit Here -->
+                    <div class="form-group col-4 submit-contact-btn">
+                        <input type="submit" value="Submit" class="btn btn-primary">
+                    </div>
+                </form>
+            </article>
+
+        </div> <!-- END CONTENT BODY HERE -->
+</section>
+<?php
     include_once 'inc/footer.php';
     ?>
