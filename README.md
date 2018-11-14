@@ -1,5 +1,6 @@
 <h1>Capstone: Online Ordering for Catering Department</h1>
 <p>This is a project for my graduation from Code School. This online ordering system will give the user a website where they can go in and choose the packages and items they want to be prepared. Once submitted, an email will be generated and sent to the catering department to start making the order for the pick up date and time.</p>
+<img src="http://afkdeveloper.com/sites/project_ft.jpg">
 
 <h4>Here is How it Works</h4>
 <ul>
