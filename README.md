@@ -13,21 +13,19 @@
 
 <h4>Behind The Scenes</h4>
 <ul>
-<li>An email is sent to the catering department with the guests order</li>
-<li>An email is sent to the guest as verification the order was placed</li>
-<li>As soon as the catering department reads the email, they will call the guest back and confirm the order with the guest</li>
-<li>The catering department prepares the order for the pickup date</li>
-<li>The catering department will call the guest when the order is ready to be picked up</li>
+<li>PHPMailer is used to send the catering department and email with the guests order when submitted</li>
+<li>PHPMailer sends the user an HTML email as an invoice for the catering order</li>
+<li>Menu items are generated from a MySQL database dynamically</li>
+<li>Used PHP to filter categories on the menu page</li>
+<li>Used OOP PHP to handle all the connections and database queries</li>
+  <li>PHP Sessions are used to carry information throughout the site</li>
+  <li>Contact Form is built with PHP and PHPMailer handles the email sending</li>
+  <li>jQuery Form Validator is used to validate the forms on all of the pages</li>
+  <li>Contact Forms, Orders, and Users are stored in the database upon submission</li>
+  <li>Custom Bootstrap classes were applied throughout the site</li>
+  <li>Site is completely responsive</li>
+  <li>AJAX was used to make some API requests</li>
 </ul>
 
-<h4>What it will NOT DO</h4>
-<ul>
-<li>No credit card processing or payment activity (at least for now)</li>
-<li>No login system</li>
-<li>Will NOT sync with a Point of Sales system for instant ordering</li>
-<li>Won't allow for heavy customization on each item, only a comments section on the final form to express your changes if any, however I do not encourage that in the early stages</li>
-<li>Is not for sale or being sold to the company (at least for now) if they like it, they can buy it much later</li>
-<li>Will NOT use email addresses for ANYTHING ELSE besides this application and verification purposes</li>
-</ul>
 
-<h4>This project is on my github for review purposes and version control mostly for myself only. I am not accepting any contributions at this time since I am building this one completely on my own for graduation. If I decide to continue working on it after and it becomes tangible, I will be accepting help.</h4>
+<p><strong>created by Christian Martins</strong></p>
